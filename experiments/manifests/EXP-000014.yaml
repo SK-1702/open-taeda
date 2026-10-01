@@ -68,6 +68,9 @@ artifacts:
   odb: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U90/results/floorplan/picorv32.odb
   gds: null
   metrics_csv: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U90/reports/metrics.csv
+  stage_defs:
+    floorplan: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U90/results/floorplan/picorv32.def
+    final: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U90/results/final/def/picorv32.def
 evidence:
   manufacturability_report: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U90/reports/manufacturability.rpt
   logs_count: 8

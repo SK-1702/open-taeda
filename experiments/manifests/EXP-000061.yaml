@@ -62,6 +62,9 @@ artifacts:
   odb: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/test_density_60/results/placement/picorv32.odb
   gds: null
   metrics_csv: null
+  stage_defs:
+    floorplan: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/test_density_60/results/floorplan/picorv32.def
+    placement: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/test_density_60/results/placement/picorv32.def
 evidence:
   manufacturability_report: null
   logs_count: 12

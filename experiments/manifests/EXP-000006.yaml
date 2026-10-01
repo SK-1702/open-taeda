@@ -74,6 +74,12 @@ artifacts:
   odb: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50_R2/issue_reproducible/results/routing/picorv32.odb
   gds: null
   metrics_csv: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50_R2/reports/metrics.csv
+  stage_defs:
+    floorplan: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50_R2/results/floorplan/picorv32.def
+    placement: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50_R2/results/placement/picorv32.def
+    cts: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50_R2/results/cts/picorv32.def
+    routing: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50_R2/results/routing/picorv32.def
+    final: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50_R2/results/final/def/picorv32.def
 evidence:
   manufacturability_report: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50_R2/reports/manufacturability.rpt
   logs_count: 33

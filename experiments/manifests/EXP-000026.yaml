@@ -62,6 +62,8 @@ artifacts:
   odb: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/first_run_pdn_noring/results/floorplan/picorv32.odb
   gds: null
   metrics_csv: null
+  stage_defs:
+    floorplan: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/first_run_pdn_noring/results/floorplan/picorv32.def
 evidence:
   manufacturability_report: null
   logs_count: 7

@@ -180,6 +180,7 @@ class ManifestNormalizer:
                 "odb": collected["artifacts"]["odb"][0] if collected["artifacts"]["odb"] else None,
                 "gds": collected["artifacts"]["gds"][0] if collected["artifacts"]["gds"] else None,
                 "metrics_csv": collected["metrics_csv"],
+                "stage_defs": collected["artifacts"].get("stage_defs", {}),
             },
             "evidence": {
                 "manufacturability_report": collected["manufacturability_rpt"],

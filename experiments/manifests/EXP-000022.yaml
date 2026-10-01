@@ -62,6 +62,9 @@ artifacts:
   odb: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp6/results/routing/picorv32.odb
   gds: null
   metrics_csv: null
+  stage_defs:
+    routing: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp6/results/routing/picorv32.def
+    final: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp6/results/final/def/picorv32.def
 evidence:
   manufacturability_report: null
   logs_count: 4

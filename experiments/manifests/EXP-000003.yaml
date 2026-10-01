@@ -62,6 +62,7 @@ artifacts:
   odb: null
   gds: null
   metrics_csv: null
+  stage_defs: {}
 evidence:
   manufacturability_report: null
   logs_count: 0

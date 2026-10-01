@@ -75,6 +75,12 @@ artifacts:
   odb: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_1/results/floorplan/picorv32.odb
   gds: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_1/results/signoff/picorv32.gds
   metrics_csv: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_1/reports/metrics.csv
+  stage_defs:
+    floorplan: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_1/results/floorplan/picorv32.def
+    placement: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_1/results/placement/picorv32.def
+    cts: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_1/results/cts/picorv32.def
+    routing: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_1/results/routing/picorv32.def
+    final: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_1/results/final/def/picorv32.def
 evidence:
   manufacturability_report: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_1/reports/manufacturability.rpt
   logs_count: 44

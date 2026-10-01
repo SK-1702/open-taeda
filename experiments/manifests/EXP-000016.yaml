@@ -64,6 +64,7 @@ artifacts:
   odb: null
   gds: null
   metrics_csv: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_full/reports/metrics.csv
+  stage_defs: {}
 evidence:
   manufacturability_report: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_full/reports/manufacturability.rpt
   logs_count: 3
