@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Open TAEDA Experiment",
+  "type": "object",
+  "required": ["schema_version", "experiment", "design", "technology", "flow", "stages"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "experiment": {
+      "type": "object",
+      "required": ["id", "name", "type"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^EXP-[0-9]{6}$"},
+        "name": {"type": "string"},
+        "campaign": {"type": "string"},
+        "type": {"enum": ["baseline", "sweep", "comparative", "debug", "intervention", "recovery", "characterization", "prediction"]}
+      }
+    },
+    "design": {"type": "object", "required": ["id", "name", "revision"]},
+    "technology": {"type": "object", "required": ["id", "revision"]},
+    "flow": {"type": "object", "required": ["name", "version"]},
+    "environment": {"type": "object"},
+    "inputs": {"type": "object"},
+    "configuration": {"type": "object"},
+    "stages": {"type": "object"},
+    "metrics": {"type": "object"},
+    "artifacts": {"type": "object"},
+    "evidence": {"type": "object"},
+    "status": {"type": "string"}
+  }
+}

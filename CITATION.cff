@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "Open TAEDA — Open Technology-Aware EDA Research Platform"
+type: software
+message: "If you use Open TAEDA, please cite the platform and the specific dataset or publication used."
+version: "0.1.0"
+authors:
+  - family-names: "K"
+    given-names: "Suresh"
+license: "Apache-2.0"

@@ -1,0 +1,5 @@
+ design_id: "DES-001"
+ name: "picorv32"
+ top_module: "picorv32"
+ repository: "TBD"
+ revision: "TBD"

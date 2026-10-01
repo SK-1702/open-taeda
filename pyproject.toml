@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "open-taeda"
+version = "0.1.0"
+description = "Open Technology-Aware EDA Research Platform"
+requires-python = ">=3.10"
+
+[project.scripts]
+ota = "ota.cli:main"
+
+[tool.setuptools]
+packages = ["ota"]

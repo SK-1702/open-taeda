@@ -1,0 +1,7 @@
+technology_id: ics55
+name: ICsprout55
+node_nm: 55
+device_architecture: planar_cmos
+device_type: mosfet
+status: RESEARCH_PDK
+validation_level: experimental

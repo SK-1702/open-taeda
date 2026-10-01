@@ -1,0 +1,7 @@
+technology_id: nangate45
+name: Nangate45
+node_nm: 45
+device_architecture: planar_cmos
+device_type: mosfet
+status: PREDICTIVE_PDK
+validation_level: academic

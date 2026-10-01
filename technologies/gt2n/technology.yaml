@@ -1,0 +1,8 @@
+technology_id: gt2n
+name: GT2N
+node_nm: 2
+device_architecture: gaa
+device_type: gaafet
+status: RESEARCH_TECHNOLOGY
+validation_level: experimental
+notes: "Research platform for a 2 nm-class GAAFET technology model/library. Do not describe as a foundry PDK unless independently justified."

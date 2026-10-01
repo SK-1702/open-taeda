@@ -1,0 +1,7 @@
+technology_id: sky130
+name: SkyWater SKY130
+node_nm: 130
+device_architecture: planar_cmos
+device_type: mosfet
+status: OPEN_FOUNDRY_PDK
+validation_level: production_derived

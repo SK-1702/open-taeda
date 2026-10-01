@@ -1,0 +1,5 @@
+ design_id: "DES-003"
+ name: "ibex"
+ top_module: "ibex_core"
+ repository: "TBD"
+ revision: "TBD"

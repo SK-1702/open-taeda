@@ -1,0 +1,7 @@
+technology_id: asap7
+name: ASAP7
+node_nm: 7
+device_architecture: finfet
+device_type: finfet
+status: PREDICTIVE_PDK
+validation_level: academic

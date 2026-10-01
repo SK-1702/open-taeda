@@ -1,0 +1,44 @@
+schema_version: "0.1"
+experiment:
+  id: "EXP-000001"
+  name: "picorv32_sky130_baseline"
+  campaign: "TAEDA-6T-3C-BASELINE"
+  type: "baseline"
+design:
+  id: "DES-001"
+  name: "picorv32"
+  revision: "TBD"
+  top: "picorv32"
+technology:
+  id: "sky130"
+  revision: "TBD"
+  library: "sky130_fd_sc_hd"
+flow:
+  name: "openroad_rtl2gds"
+  version: "TBD"
+tools:
+  yosys: "TBD"
+  openroad: "TBD"
+  opensta: "TBD"
+environment:
+  os: "TBD"
+  architecture: "x86_64"
+inputs:
+  rtl: "designs/picorv32/rtl.yaml"
+  constraints: "designs/picorv32/constraints/main.sdc"
+configuration:
+  core_utilization: 45
+  aspect_ratio: 1.0
+  clock_period_ns: 20.0
+stages:
+  synthesis: {status: "NOT_RUN"}
+  floorplan: {status: "NOT_RUN"}
+  placement: {status: "NOT_RUN"}
+  cts: {status: "NOT_RUN"}
+  routing: {status: "NOT_RUN"}
+  extraction: {status: "NOT_RUN"}
+  sta: {status: "NOT_RUN"}
+  power: {status: "NOT_RUN"}
+  drc: {status: "NOT_RUN"}
+  lvs: {status: "NOT_RUN"}
+status: "DRAFT"
