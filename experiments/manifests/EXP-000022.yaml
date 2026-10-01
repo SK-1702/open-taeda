@@ -1,0 +1,78 @@
+schema_version: '0.1'
+experiment:
+  id: EXP-000022
+  name: asap7_picorv32_research_exp6
+  campaign: TAEDA-CROSS-PDK
+  type: intervention
+  source_run_path: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp6
+design:
+  id: DES-001
+  name: picorv32
+  revision: v1.0
+  top: picorv32
+technology:
+  id: asap7
+  revision: v1.0
+flow:
+  name: openroad_rtl2gds
+  version: OpenLane v1.0.2
+tools:
+  yosys: Yosys 0.38
+  openroad: OpenROAD 26Q2-2115-g14b1ef1329
+  opensta: OpenSTA 2.6
+environment:
+  os: Linux 6.8.0-45-generic x86_64
+  architecture: x86_64
+inputs:
+  rtl: designs/picorv32/rtl.yaml
+  constraints: designs/picorv32/constraints/main.sdc
+configuration:
+  clock_period_ns: 20.0
+  core_utilization: 1.0
+  aspect_ratio: 1.0
+  grt_repair_antennas: '0'
+  fill_cell: FILLER*
+  config_hash: efeb3774426ef0819739f27da99c02b5917bb7c61fa412b14f9b99c54cbfc978
+stages:
+  synthesis:
+    status: NOT_RUN
+  floorplan:
+    status: NOT_RUN
+  placement:
+    status: NOT_RUN
+  cts:
+    status: NOT_RUN
+  routing:
+    status: COMPLETED
+  extraction:
+    status: COMPLETED
+  sta:
+    status: COMPLETED
+  power:
+    status: COMPLETED
+  drc:
+    status: COMPLETED
+  lvs:
+    status: COMPLETED
+metrics: {}
+artifacts:
+  def: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp6/results/routing/picorv32.def
+  odb: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp6/results/routing/picorv32.odb
+  gds: null
+  metrics_csv: null
+evidence:
+  manufacturability_report: null
+  logs_count: 4
+  reports_count: 1
+status: SUCCESS
+interventions:
+- intervention_id: INT-ASAP7-001
+  parent_experiment: EXP-ASAP7-BASE
+  changed_file: config.tcl
+  changed_parameter: FILL_CELL
+  before_value: asap7_filler_*
+  after_value: '""'
+  reason: Suppress pre-routing filler cell insertion to reduce component count from
+    414,131 to 23,188 and prevent 15GB RAM OOM crash
+  classification: TOOL_OPTIMIZATION
+  result: TritonRoute detailed routing completed cleanly with 0 antenna violations

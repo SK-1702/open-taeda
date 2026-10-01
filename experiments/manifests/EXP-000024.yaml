@@ -1,0 +1,67 @@
+schema_version: '0.1'
+experiment:
+  id: EXP-000024
+  name: first_run
+  campaign: TAEDA-CROSS-PDK
+  type: baseline
+  source_run_path: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/first_run
+design:
+  id: DES-001
+  name: picorv32
+  revision: v1.0
+  top: picorv32
+technology:
+  id: sky130
+  revision: v1.0
+flow:
+  name: openroad_rtl2gds
+  version: OpenLane v1.0.2
+tools:
+  yosys: Yosys 0.38
+  openroad: OpenROAD 26Q2-2115-g14b1ef1329
+  opensta: OpenSTA 2.6
+environment:
+  os: Linux 6.8.0-45-generic x86_64
+  architecture: x86_64
+inputs:
+  rtl: designs/picorv32/rtl.yaml
+  constraints: designs/picorv32/constraints/main.sdc
+configuration:
+  clock_period_ns: 20.0
+  core_utilization: 30.0
+  aspect_ratio: 1.0
+  grt_repair_antennas: '1'
+  fill_cell: sky130_fd_sc_hd__fill*
+  config_hash: 4763784a6f93e4e2bb854173bd81e3a98c3086f43e2e9110d56b2412d25a3c61
+stages:
+  synthesis:
+    status: COMPLETED
+  floorplan:
+    status: COMPLETED
+  placement:
+    status: COMPLETED
+  cts:
+    status: COMPLETED
+  routing:
+    status: COMPLETED
+  extraction:
+    status: COMPLETED
+  sta:
+    status: COMPLETED
+  power:
+    status: COMPLETED
+  drc:
+    status: COMPLETED
+  lvs:
+    status: COMPLETED
+metrics: {}
+artifacts:
+  def: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/first_run/results/cts/picorv32.def
+  odb: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/first_run/results/cts/picorv32.odb
+  gds: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/first_run/results/signoff/picorv32.gds
+  metrics_csv: null
+evidence:
+  manufacturability_report: null
+  logs_count: 42
+  reports_count: 7
+status: INCOMPLETE

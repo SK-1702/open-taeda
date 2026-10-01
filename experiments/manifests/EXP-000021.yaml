@@ -1,0 +1,73 @@
+schema_version: '0.1'
+experiment:
+  id: EXP-000021
+  name: asap7_picorv32_research_exp2
+  campaign: TAEDA-CROSS-PDK
+  type: comparative
+  source_run_path: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp2
+design:
+  id: DES-001
+  name: picorv32
+  revision: v1.0
+  top: picorv32
+technology:
+  id: asap7
+  revision: v1.0
+flow:
+  name: openroad_rtl2gds
+  version: OpenLane v1.0.2
+tools:
+  yosys: Yosys 0.38
+  openroad: OpenROAD 26Q2-2115-g14b1ef1329
+  opensta: OpenSTA 2.6
+environment:
+  os: Linux 6.8.0-45-generic x86_64
+  architecture: x86_64
+inputs:
+  rtl: designs/picorv32/rtl.yaml
+  constraints: designs/picorv32/constraints/main.sdc
+configuration:
+  clock_period_ns: 20.0
+  core_utilization: 1.0
+  aspect_ratio: 1.0
+  grt_repair_antennas: '0'
+  fill_cell: FILLER*
+  config_hash: 7e48f695fb010b88a313ddee7a4c96e0d683ceb159325d96686ee797b4e4369f
+stages:
+  synthesis:
+    status: COMPLETED
+  floorplan:
+    status: COMPLETED
+  placement:
+    status: NOT_RUN
+  cts:
+    status: NOT_RUN
+  routing:
+    status: NOT_RUN
+  extraction:
+    status: NOT_RUN
+  sta:
+    status: NOT_RUN
+  power:
+    status: NOT_RUN
+  drc:
+    status: NOT_RUN
+  lvs:
+    status: NOT_RUN
+metrics:
+  cell_count: 22331
+  core_area_um2: 117099.45954000001
+  die_area_mm2: -1.0
+  wirelength_um: -1.0
+  vias_count: -1
+  diode_count: 0
+artifacts:
+  def: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp2/results/final/def/picorv32.def
+  odb: null
+  gds: null
+  metrics_csv: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp2/reports/metrics.csv
+evidence:
+  manufacturability_report: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp2/reports/manufacturability.rpt
+  logs_count: 7
+  reports_count: 12
+status: FAILED
