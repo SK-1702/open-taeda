@@ -45,31 +45,43 @@ class ManifestNormalizer:
         # Normalize metrics
         norm_metrics = {}
         if metrics_raw:
-            if "TotalCells" in metrics_raw:
+            if "TotalCells" in metrics_raw and metrics_raw["TotalCells"] != "-1":
                 try: norm_metrics["cell_count"] = int(metrics_raw["TotalCells"])
                 except ValueError: pass
-            if "CoreArea_um^2" in metrics_raw:
+            if "CoreArea_um^2" in metrics_raw and metrics_raw["CoreArea_um^2"] != "-1":
                 try: norm_metrics["core_area_um2"] = float(metrics_raw["CoreArea_um^2"])
                 except ValueError: pass
-            if "DIEAREA_mm^2" in metrics_raw:
+            if "DIEAREA_mm^2" in metrics_raw and metrics_raw["DIEAREA_mm^2"] != "-1":
                 try: norm_metrics["die_area_mm2"] = float(metrics_raw["DIEAREA_mm^2"])
                 except ValueError: pass
+            if "FP_CORE_UTIL" in metrics_raw and metrics_raw["FP_CORE_UTIL"] != "-1":
+                try: norm_metrics["utilization_pct"] = float(metrics_raw["FP_CORE_UTIL"])
+                except ValueError: pass
+            elif "CORE_UTILIZATION" in cfg:
+                try: norm_metrics["utilization_pct"] = float(cfg["CORE_UTILIZATION"])
+                except ValueError: pass
+
             if "wns" in metrics_raw and metrics_raw["wns"] != "-1":
                 try: norm_metrics["wns_ns"] = float(metrics_raw["wns"])
                 except ValueError: pass
             if "tns" in metrics_raw and metrics_raw["tns"] != "-1":
                 try: norm_metrics["tns_ns"] = float(metrics_raw["tns"])
                 except ValueError: pass
-            if "wire_length" in metrics_raw:
+            if "wire_length" in metrics_raw and metrics_raw["wire_length"] != "-1":
                 try: norm_metrics["wirelength_um"] = float(metrics_raw["wire_length"])
                 except ValueError: pass
-            if "vias" in metrics_raw:
+            if "vias" in metrics_raw and metrics_raw["vias"] != "-1":
                 try: norm_metrics["vias_count"] = int(metrics_raw["vias"])
                 except ValueError: pass
+            if "Peak_Memory_Usage_MB" in metrics_raw and metrics_raw["Peak_Memory_Usage_MB"] != "-1":
+                try: norm_metrics["peak_memory_mb"] = float(metrics_raw["Peak_Memory_Usage_MB"])
+                except ValueError: pass
+            if "total_runtime" in metrics_raw and metrics_raw["total_runtime"] != "-1":
+                norm_metrics["runtime_str"] = metrics_raw["total_runtime"]
             if "Magic_violations" in metrics_raw and metrics_raw["Magic_violations"] != "-1":
                 try: norm_metrics["drc_errors"] = int(metrics_raw["Magic_violations"])
                 except ValueError: pass
-            if "DiodeCells" in metrics_raw:
+            if "DiodeCells" in metrics_raw and metrics_raw["DiodeCells"] != "-1":
                 try: norm_metrics["diode_count"] = int(metrics_raw["DiodeCells"])
                 except ValueError: pass
             if "pin_antenna_violations" in metrics_raw and metrics_raw["pin_antenna_violations"] != "-1":
@@ -79,6 +91,15 @@ class ManifestNormalizer:
                 try: norm_metrics["net_antenna_violations"] = int(metrics_raw["net_antenna_violations"])
                 except ValueError: pass
 
+            # Power metrics
+            int_p = float(metrics_raw.get("power_typical_internal_uW", 0)) if metrics_raw.get("power_typical_internal_uW", "-1") != "-1" else 0
+            sw_p = float(metrics_raw.get("power_typical_switching_uW", 0)) if metrics_raw.get("power_typical_switching_uW", "-1") != "-1" else 0
+            leak_p = float(metrics_raw.get("power_typical_leakage_uW", 0)) if metrics_raw.get("power_typical_leakage_uW", "-1") != "-1" else 0
+            if int_p > 0 or sw_p > 0 or leak_p > 0:
+                norm_metrics["dynamic_power_uw"] = round(int_p + sw_p, 4)
+                norm_metrics["leakage_power_uw"] = round(leak_p, 6)
+                norm_metrics["total_power_uw"] = round(int_p + sw_p + leak_p, 4)
+
         if manufacturability:
             if "DRC violations" in manufacturability:
                 try: norm_metrics["drc_errors"] = int(manufacturability["DRC violations"])
@@ -87,28 +108,34 @@ class ManifestNormalizer:
                 try: norm_metrics["antenna_violations"] = int(manufacturability["Antenna violations"])
                 except ValueError: pass
 
-        # Flow & tool versions
-        flow_name = "openroad_rtl2gds"
-        flow_ver = "OpenLane v1.0.2"
-        yosys_ver = "Yosys 0.38"
-        openroad_ver = "OpenROAD 26Q2-2115-g14b1ef1329"
+        # Parent experiment mapping
+        parent_exp = None
+        run_name = run_dir.name
+        if "asap7_picorv32_research_exp6" in run_name:
+            parent_exp = "EXP-000020" # asap7_picorv32_research_exp1
+        elif "icsprout55" in run_name and ("exp4" in run_name or "exp5" in run_name or "exp6" in run_name or "exp7" in run_name or "exp8" in run_name):
+            parent_exp = "EXP-000038" # icsprout55_picorv32_research_exp1
+        elif "nangate45_picorv32_research_exp7" in run_name:
+            parent_exp = "EXP-000048" # nangate45_picorv32_research_exp1
 
         # Determine exp type
         exp_type = "baseline"
         if interventions:
             exp_type = "intervention"
-        elif "u50" in run_dir.name.lower() or "u60" in run_dir.name.lower() or "u70" in run_dir.name.lower() or "u80" in run_dir.name.lower() or "u90" in run_dir.name.lower():
+        elif "u50" in run_name.lower() or "u60" in run_name.lower() or "u70" in run_name.lower() or "u80" in run_name.lower() or "u90" in run_name.lower():
             exp_type = "sweep"
-        elif "exp" in run_dir.name.lower():
+        elif "exp" in run_name.lower():
             exp_type = "comparative"
 
         manifest = {
             "schema_version": "0.1",
             "experiment": {
                 "id": exp_id,
-                "name": run_dir.name,
+                "name": run_name,
                 "campaign": campaign,
                 "type": exp_type,
+                "parent_experiment": parent_exp,
+                "reproducibility": "R3 - Environment & Artifact Provenance",
                 "source_run_path": str(run_dir),
             },
             "design": {
@@ -122,12 +149,12 @@ class ManifestNormalizer:
                 "revision": "v1.0",
             },
             "flow": {
-                "name": flow_name,
-                "version": flow_ver,
+                "name": "openroad_rtl2gds",
+                "version": "OpenLane v1.0.2",
             },
             "tools": {
-                "yosys": yosys_ver,
-                "openroad": openroad_ver,
+                "yosys": "Yosys 0.38",
+                "openroad": "OpenROAD 26Q2-2115-g14b1ef1329",
                 "opensta": "OpenSTA 2.6",
             },
             "environment": {

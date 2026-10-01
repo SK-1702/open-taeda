@@ -4,6 +4,8 @@ experiment:
   name: asap7_picorv32_research_exp6
   campaign: TAEDA-CROSS-PDK
   type: intervention
+  parent_experiment: EXP-000020
+  reproducibility: R3 - Environment & Artifact Provenance
   source_run_path: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp6
 design:
   id: DES-001

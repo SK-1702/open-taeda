@@ -1,4 +1,4 @@
-# Open TAEDA Research Platform HTML Templates
+# Open TAEDA Research Platform HTML Templates & Scripts (Iteration 1)
 
 BASE_HEADER = """<!DOCTYPE html>
 <html lang="en">
@@ -73,7 +73,7 @@ BASE_HEADER = """<!DOCTYPE html>
         nav a:hover, nav a.active { color: var(--accent-blue); }
 
         .container {
-            max-width: 1280px;
+            max-width: 1380px;
             margin: 2rem auto;
             padding: 0 1.5rem;
         }
@@ -88,7 +88,7 @@ BASE_HEADER = """<!DOCTYPE html>
 
         h1, h2, h3, h4 { color: var(--text-heading); margin-bottom: 1rem; }
         h1 { font-size: 1.8rem; }
-        h2 { font-size: 1.4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+        h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 0.5rem; }
 
         .badge {
             display: inline-block;
@@ -102,20 +102,57 @@ BASE_HEADER = """<!DOCTYPE html>
         .badge-failed { background: rgba(248, 81, 73, 0.15); color: var(--accent-red); border: 1px solid rgba(248, 81, 73, 0.4); }
         .badge-incomplete { background: rgba(210, 153, 34, 0.15); color: var(--accent-orange); border: 1px solid rgba(210, 153, 34, 0.4); }
         .badge-tech { background: rgba(88, 166, 255, 0.15); color: var(--accent-blue); border: 1px solid rgba(88, 166, 255, 0.4); }
+        .badge-comparable { background: rgba(63, 185, 80, 0.15); color: var(--accent-green); border: 1px solid rgba(63, 185, 80, 0.4); }
+        .badge-partial { background: rgba(210, 153, 34, 0.15); color: var(--accent-orange); border: 1px solid rgba(210, 153, 34, 0.4); }
+        .badge-not-comparable { background: rgba(248, 81, 73, 0.15); color: var(--accent-red); border: 1px solid rgba(248, 81, 73, 0.4); }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 1rem 0;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
         th, td {
             text-align: left;
-            padding: 0.75rem;
+            padding: 0.65rem 0.75rem;
             border-bottom: 1px solid var(--border-color);
         }
-        th { background-color: rgba(255, 255, 255, 0.02); color: var(--text-muted); font-weight: 600; }
+        th { background-color: rgba(255, 255, 255, 0.02); color: var(--text-muted); font-weight: 600; cursor: pointer; user-select: none; }
+        th:hover { color: var(--accent-blue); }
         tr:hover { background-color: rgba(255, 255, 255, 0.02); }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .toolbar select, .toolbar input[type="text"], .btn {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: var(--font-sans);
+        }
+        .toolbar select:focus, .toolbar input:focus { outline: none; border-color: var(--accent-blue); }
+
+        .btn {
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s, border 0.2s;
+        }
+        .btn-primary { background-color: #238636; color: #fff; border-color: rgba(240, 246, 252, 0.1); }
+        .btn-primary:hover { background-color: #2ea043; }
+        .btn-secondary { background-color: #21262d; color: var(--text-main); }
+        .btn-secondary:hover { background-color: #30363d; }
 
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -131,10 +168,18 @@ BASE_HEADER = """<!DOCTYPE html>
         .stat-value { font-size: 2rem; font-weight: 700; color: var(--text-heading); font-family: var(--font-mono); }
         .stat-label { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
+        .flow-node {
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+        }
+
         pre, code {
             font-family: var(--font-mono);
             background-color: #010409;
-            border-radius: 6px;
+            border-radius: 4px;
         }
         pre {
             padding: 1rem;
@@ -154,6 +199,15 @@ BASE_HEADER = """<!DOCTYPE html>
             font-size: 0.85rem;
             border-top: 1px solid var(--border-color);
             margin-top: 3rem;
+        }
+
+        #layoutCanvas {
+            background-color: #05070a;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: crosshair;
+            width: 100%;
+            height: 500px;
         }
     </style>
 </head>

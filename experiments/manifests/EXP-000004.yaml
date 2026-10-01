@@ -4,6 +4,8 @@ experiment:
   name: SKY130_PICORV32A_U50
   campaign: TAEDA-CROSS-PDK
   type: sweep
+  parent_experiment: null
+  reproducibility: R3 - Environment & Artifact Provenance
   source_run_path: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50
 design:
   id: DES-001
@@ -58,8 +60,8 @@ metrics:
   cell_count: 23965
   core_area_um2: 192781.1424
   die_area_mm2: 0.208587265425
-  wirelength_um: -1.0
-  vias_count: -1
+  utilization_pct: 50.0
+  runtime_str: 0h4m40s0ms
   diode_count: 18
 artifacts:
   def: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50/results/placement/picorv32.def

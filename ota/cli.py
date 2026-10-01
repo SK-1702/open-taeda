@@ -45,15 +45,33 @@ def collect_runs():
     collector = RunCollector()
     normalizer = ManifestNormalizer(MANIFESTS_DIR)
     runs = collector.discover_runs()
+
+    # Pre-load existing run_path -> exp_id mapping
+    path_to_id = {}
+    for mfile in sorted(MANIFESTS_DIR.glob("*.yaml")):
+        try:
+            with open(mfile, "r") as f:
+                import yaml
+                data = yaml.safe_load(f)
+                if data and isinstance(data, dict):
+                    src_p = data.get("experiment", {}).get("source_run_path")
+                    eid = data.get("experiment", {}).get("id")
+                    if src_p and eid:
+                        path_to_id[str(Path(src_p).resolve())] = eid
+        except Exception:
+            pass
+
     generated = []
     for r in runs:
         parser = RunParser(r)
         status = parser.extract_status()
-        manifest = normalizer.build_manifest(r)
+        existing_id = path_to_id.get(str(r.resolve()))
+        manifest = normalizer.build_manifest(r, exp_id=existing_id)
         out_path = normalizer.save_manifest(manifest)
         generated.append(out_path)
         print(f"Generated manifest: {out_path.name} for run {r.name} ({status})")
-    print(f"Successfully generated {len(generated)} experiment manifests in {MANIFESTS_DIR}")
+    print(f"Successfully generated/updated {len(generated)} experiment manifests in {MANIFESTS_DIR}")
+
 
 def publish_run(run_dir_path: str, push: bool = False):
     run_dir = Path(run_dir_path).resolve()

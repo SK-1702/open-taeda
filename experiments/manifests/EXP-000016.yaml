@@ -4,6 +4,8 @@ experiment:
   name: ai_demo_full
   campaign: TAEDA-CROSS-PDK
   type: baseline
+  parent_experiment: null
+  reproducibility: R3 - Environment & Artifact Provenance
   source_run_path: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/ai_demo_full
 design:
   id: DES-001
@@ -55,12 +57,8 @@ stages:
   lvs:
     status: NOT_RUN
 metrics:
-  cell_count: -1
-  core_area_um2: -1.0
-  die_area_mm2: -1.0
-  wirelength_um: -1.0
-  vias_count: -1
-  diode_count: -1
+  utilization_pct: 30.0
+  runtime_str: 0h0m23s0ms
 artifacts:
   def: null
   odb: null

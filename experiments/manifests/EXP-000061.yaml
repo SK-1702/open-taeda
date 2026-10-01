@@ -4,6 +4,8 @@ experiment:
   name: test_density_60
   campaign: TAEDA-CROSS-PDK
   type: baseline
+  parent_experiment: null
+  reproducibility: R3 - Environment & Artifact Provenance
   source_run_path: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/test_density_60
 design:
   id: DES-001

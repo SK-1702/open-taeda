@@ -46,11 +46,11 @@ class DatabaseManager:
             status = data.get("status", "UNKNOWN")
             cfg = data.get("configuration", {})
 
-            # Upsert experiment record
+            # Upsert experiment record including parent_experiment_id
             cur.execute("""
                 INSERT OR REPLACE INTO experiments 
-                (experiment_id, campaign_id, name, design_id, technology_id, flow_id, experiment_type, status, configuration_hash)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                (experiment_id, campaign_id, name, design_id, technology_id, flow_id, parent_experiment_id, experiment_type, status, configuration_hash)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 exp_id,
                 exp.get("campaign", "TAEDA-CROSS-PDK"),
@@ -58,6 +58,7 @@ class DatabaseManager:
                 des.get("id", "DES-001"),
                 tech.get("id", "sky130"),
                 "FLOW-001",
+                exp.get("parent_experiment"),
                 exp.get("type", "baseline"),
                 status,
                 cfg.get("config_hash")

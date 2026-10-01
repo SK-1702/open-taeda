@@ -4,6 +4,8 @@ experiment:
   name: RUN_2026.06.19_19.01.45
   campaign: TAEDA-CROSS-PDK
   type: baseline
+  parent_experiment: null
+  reproducibility: R3 - Environment & Artifact Provenance
   source_run_path: /home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/RUN_2026.06.19_19.01.45
 design:
   id: DES-001
