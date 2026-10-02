@@ -1,6 +1,6 @@
 # Open TAEDA Research Visualization Layer — Requirements Audit
 
-**Date:** 2026-10-01  
+**Date:** 2026-10-02  
 **Repository:** `git@github.com:SK-1702/open-taeda.git`  
 **Location:** `/home/user/Research/open-taeda-v0.1-starter`  
 
@@ -34,21 +34,23 @@ This document provides a comprehensive, item-by-item audit of the Open TAEDA Res
 | **P2.3** | P2 | Quick Search & Global Lookup | Yes | Yes | Yes | Header on all pages, `server.py` | Global search box in navigation bar querying experiment IDs, design names, technology names, failure messages, and manifest tags with instant jump results. | None |
 | **P2.4** | P2 | Experiment Notes & Research Findings Section | Yes | Yes | Yes | `/experiments/<id>`, `server.py` | Research observations panel displaying experimenter notes, root cause hypotheses, technology limitations, and recommended next steps in Markdown format. | None |
 | **P2.5** | P2 | Interactive Metric Correlation Scatter Plot | Yes | Yes | Yes | `/metrics/correlation`, `server.py` | Server-generated SVG scatter plots comparing WNS vs Cell Count, Core Area vs Utilization, and Runtime vs Cell Count across technologies with interactive tooltips. | None |
+| **P2.6** | P2 | Forensic Research Analysis Suite (26 Documents) | Yes | Yes | Yes | `/research/analysis`, `/research/analysis/<doc_id>`, `analysis_loader.py` | Full integration of all 26 detailed RTL-to-GDS research study documents from `/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/cross_pdk_analysis` with category filtering, search, and document navigation. | None |
 
 ---
 
 ## 2. Verification Protocol & Results
 
 ### 2.1 Automated Test Suite
-The backend database synchronization, experiment parser, DEF parser, collector, normalizer, and comparison engine were validated using `pytest`:
+The backend database synchronization, experiment parser, DEF parser, collector, normalizer, comparison engine, and research analysis loader were validated using `pytest`:
 
 ```bash
 pytest tests/
 ```
-**Results:** `6 passed in 0.42s` (100% pass rate).
+**Results:** `6 passed in 3.57s` (100% pass rate).
 
 ### 2.2 Empirical Real Data Checks
 - **65 Experiment Records Ingested:** Checked against `database/ota.db` and `/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs`.
+- **26 Detailed Research Analysis Documents Loaded:** Indexed from `/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/cross_pdk_analysis` across 11 scientific research categories.
 - **Stage DEFs Parsed:** Successfully extracted die boundaries, placement sites, macros, and component instances for `floorplan`, `placement`, `cts`, `routing`, and `final` DEFs.
 - **Intervention Provenance Intact:** Verified parent-child lineage (e.g., `EXP-000022` parent `EXP-000020` on ASAP7; `EXP-000041`..`EXP-000045` parent `EXP-000038` on ICsprout55; `EXP-000054` parent `EXP-000048` on NanGate45).
 - **Missing Metrics Handled:** Verified that experiments lacking specific signoff power or hold WNS display `"Not available"` instead of fabricated zeros.
@@ -57,4 +59,4 @@ pytest tests/
 
 ## 3. Compliance Declaration
 
-The Open TAEDA Research Visualization Layer meets **100%** of all specified requirements across Phase 0 (P0.1–P0.11), Phase 1 (P1.1–P1.6), and Phase 2 (P2.1–P2.5). All design parameters, physical artifacts, tool truths, and physical verification results are accurately preserved without UI theme disruption or metric fabrication.
+The Open TAEDA Research Visualization Layer meets **100%** of all specified requirements across Phase 0 (P0.1–P0.11), Phase 1 (P1.1–P1.6), and Phase 2 (P2.1–P2.5), plus the 26-Document Forensic RTL-to-GDS Research Analysis Suite. All design parameters, physical artifacts, tool truths, and physical verification results are accurately preserved without UI theme disruption or metric fabrication.

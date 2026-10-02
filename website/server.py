@@ -2,12 +2,14 @@ import json
 import sqlite3
 import re
 import yaml
+import html
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 from typing import Any, Dict, List, Optional
 from website.templates import BASE_HEADER, BASE_FOOTER
 from website.def_parser import parse_def_file
+from website.analysis_loader import get_all_analysis_docs, get_analysis_doc_by_id
 
 ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT / "database" / "ota.db"
@@ -63,6 +65,11 @@ class WebHandler(BaseHTTPRequestHandler):
         elif path.startswith("/experiments/"):
             exp_id = path.split("/")[-1]
             self.render_experiment_detail(exp_id)
+        elif path == "/research/analysis":
+            self.render_analysis_list(parsed.query)
+        elif path.startswith("/research/analysis/"):
+            doc_id = path.split("/")[-1]
+            self.render_analysis_detail(doc_id)
         elif path == "/technologies":
             self.render_technologies_list()
         elif path == "/technologies/compare":
@@ -165,6 +172,7 @@ class WebHandler(BaseHTTPRequestHandler):
             </p>
             <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
                 <a href="/experiments/EXP-000022" class="badge badge-success" style="padding: 0.5rem 1rem; font-size: 0.9rem;">⭐ Landmark Experiment: EXP-000022 (ASAP7 7nm Signoff)</a>
+                <a href="/research/analysis" class="badge badge-tech" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: rgba(57, 197, 207, 0.15); color: var(--accent-cyan); border: 1px solid rgba(57, 197, 207, 0.4);">📚 26 Forensic Research Studies</a>
                 <a href="/experiments" class="badge badge-tech" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Browse All {total_exp} Experiments</a>
                 <a href="/technologies/compare" class="badge badge-tech" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Cross-PDK Technology Comparison</a>
             </div>
@@ -180,8 +188,8 @@ class WebHandler(BaseHTTPRequestHandler):
                 <div class="stat-label">Verified Successes</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" style="color: var(--accent-red);">{failed_exp}</div>
-                <div class="stat-label">Preserved Failures</div>
+                <div class="stat-value" style="color: var(--accent-cyan);">26</div>
+                <div class="stat-label"><a href="/research/analysis" style="color: var(--accent-cyan);">Forensic Research Studies</a></div>
             </div>
             <div class="stat-card">
                 <div class="stat-value" style="color: var(--accent-blue);">{total_tech} Nodes / {total_des} Designs</div>
@@ -1391,6 +1399,134 @@ class WebHandler(BaseHTTPRequestHandler):
         rows = [dict(r) for r in cur.fetchall()]
         conn.close()
         self.send_json(rows)
+
+    def render_analysis_list(self, query_str: str):
+        params = parse_qs(query_str)
+        cat_filter = params.get("category", [""])[0].strip()
+        search_query = params.get("q", [""])[0].strip().lower()
+
+        docs = get_all_analysis_docs()
+        categories = sorted(list(set(d["category"] for d in docs)))
+
+        filtered_docs = []
+        for d in docs:
+            if cat_filter and d["category"] != cat_filter:
+                continue
+            if search_query:
+                q_match = (
+                    search_query in d["id"].lower()
+                    or search_query in d["title"].lower()
+                    or search_query in d["description"].lower()
+                    or search_query in d["category"].lower()
+                )
+                if not q_match:
+                    continue
+            filtered_docs.append(d)
+
+        cat_options = "<option value=''>All Categories (26 Forensic Documents)</option>"
+        for c in categories:
+            selected = "selected" if c == cat_filter else ""
+            cat_options += f"<option value='{html.escape(c)}' {selected}>{html.escape(c)}</option>"
+
+        doc_cards = []
+        for d in filtered_docs:
+            doc_cards.append(f"""
+            <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                        <span class="badge badge-tech">Document {d['id']}</span>
+                        <span class="badge badge-success">{html.escape(d['category'])}</span>
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-heading);">{html.escape(d['title'])}</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">{html.escape(d['description'])}</p>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-top: 0.5rem;">
+                    <span style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">{d['size_kb']} KB</span>
+                    <a href="/research/analysis/{d['id']}" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.35rem 0.75rem;">Read Forensic Study &rarr;</a>
+                </div>
+            </div>
+            """)
+
+        cards_html = "\n".join(doc_cards) if doc_cards else "<div class='card'><p style='color: var(--text-muted);'>No matching research analysis documents found.</p></div>"
+
+        content = f"""
+        <div class="card" style="background: linear-gradient(135deg, #161b22, #0d1117); border: 1px solid var(--accent-cyan);">
+            <h1>Forensic RTL-to-GDS Research Analysis Suite</h1>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">
+                An exhaustive 26-document scientific forensic study analyzing physical implementation, technology collateral flaws, tool behavior, incident logs, and Four Truths across <strong>Sky130 (130nm)</strong>, <strong>ICsprout55 (55nm)</strong>, <strong>NanGate45 (45nm)</strong>, and <strong>ASAP7 (7nm)</strong>.
+            </p>
+            <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <a href="/research/analysis/09" class="badge badge-tech" style="padding: 0.4rem 0.8rem;">Doc 09: PDK Forensics</a>
+                <a href="/research/analysis/10" class="badge badge-tech" style="padding: 0.4rem 0.8rem;">Doc 10: Interventions</a>
+                <a href="/research/analysis/11" class="badge badge-tech" style="padding: 0.4rem 0.8rem;">Doc 11: Incident Log</a>
+                <a href="/research/analysis/17" class="badge badge-tech" style="padding: 0.4rem 0.8rem;">Doc 17: Physics to P&amp;R</a>
+                <a href="/research/analysis/23" class="badge badge-tech" style="padding: 0.4rem 0.8rem;">Doc 23: PDK Defects</a>
+                <a href="/research/analysis/24" class="badge badge-tech" style="padding: 0.4rem 0.8rem;">Doc 24: Do-Not-Compare Matrix</a>
+                <a href="/research/analysis/26" class="badge badge-tech" style="padding: 0.4rem 0.8rem;">Doc 26: Four Truths</a>
+            </div>
+        </div>
+
+        <form method="GET" action="/research/analysis" class="toolbar">
+            <label style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Category:</label>
+            <select name="category" onchange="this.form.submit()">
+                {cat_options}
+            </select>
+
+            <label style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-left: 1rem;">Search:</label>
+            <input type="text" name="q" value="{html.escape(search_query)}" placeholder="Search study title or topic..." style="width: 250px;">
+            <button type="submit" class="btn btn-secondary">Search</button>
+            <a href="/research/analysis" class="btn btn-secondary">Clear</a>
+            <span style="margin-left: auto; font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">
+                Showing {len(filtered_docs)} of {len(docs)} Research Documents
+            </span>
+        </form>
+
+        <div class="grid-2">
+            {cards_html}
+        </div>
+        """
+        self.send_html(render_page("Forensic Research Analysis Suite (26 Documents)", content, active="analysis"))
+
+    def render_analysis_detail(self, doc_id: str):
+        doc = get_analysis_doc_by_id(doc_id)
+        if not doc:
+            self.send_html(render_page("Document Not Found", "<div class='card'><h1>Document Not Found</h1><p>The requested research document does not exist.</p><a href='/research/analysis' class='btn btn-secondary'>&larr; Back to Research Studies</a></div>", active="analysis"), 404)
+            return
+
+        cur_num = int(doc_id)
+        prev_id = f"{cur_num - 1:02d}" if cur_num > 1 else None
+        next_id = f"{cur_num + 1:02d}" if cur_num < 26 else None
+
+        nav_links = ["<a href='/research/analysis' class='btn btn-secondary'>&larr; All 26 Studies</a>"]
+        if prev_id:
+            nav_links.append(f"<a href='/research/analysis/{prev_id}' class='btn btn-secondary'>&larr; Doc {prev_id}</a>")
+        if next_id:
+            nav_links.append(f"<a href='/research/analysis/{next_id}' class='btn btn-secondary'>Doc {next_id} &rarr;</a>")
+
+        nav_bar = f"<div style='display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;'>{' '.join(nav_links)}</div>"
+
+        content = f"""
+        {nav_bar}
+
+        <div class="card" style="border-top: 4px solid var(--accent-cyan);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                <div>
+                    <span class="badge badge-tech">Document {doc['id']} of 26</span>
+                    <span class="badge badge-success">{html.escape(doc['category'])}</span>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">{doc['size_kb']} KB | Source: {html.escape(doc['filename'])}</span>
+            </div>
+            <h1 style="font-size: 1.7rem; color: var(--text-heading); margin-bottom: 0.5rem;">{html.escape(doc['title'])}</h1>
+            <p style="font-size: 1rem; color: var(--text-muted);">{html.escape(doc['description'])}</p>
+        </div>
+
+        <div class="card" style="line-height: 1.7; font-size: 0.95rem;">
+            {doc['content_html']}
+        </div>
+
+        {nav_bar}
+        """
+        self.send_html(render_page(f"Doc {doc['id']}: {doc['title']}", content, active="analysis"))
 
 def run_server(port: int = 8000):
     server_address = ("", port)

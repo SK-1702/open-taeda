@@ -209,6 +209,12 @@ BASE_HEADER = """<!DOCTYPE html>
             width: 100%;
             height: 500px;
         }
+
+        .doc-section-h2 { font-size: 1.35rem; color: var(--accent-cyan); border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem; margin-top: 1.5rem; margin-bottom: 0.8rem; }
+        .doc-section-h3 { font-size: 1.1rem; color: var(--accent-blue); margin-top: 1.2rem; margin-bottom: 0.6rem; }
+        .doc-body-p { margin-bottom: 0.8rem; line-height: 1.6; color: var(--text-main); }
+        .doc-bullet-item { margin-left: 1.5rem; margin-bottom: 0.4rem; list-style-type: disc; color: var(--text-main); }
+        .doc-callout { background: rgba(57, 197, 207, 0.1); border-left: 4px solid var(--accent-cyan); padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -220,8 +226,10 @@ BASE_HEADER = """<!DOCTYPE html>
         <nav>
             <a href="/" class="{% if active=='home' %}active{% endif %}">Dashboard</a>
             <a href="/experiments" class="{% if active=='experiments' %}active{% endif %}">Experiments</a>
+            <a href="/research/analysis" class="{% if active=='analysis' %}active{% endif %}">Research Studies (26)</a>
             <a href="/technologies" class="{% if active=='technologies' %}active{% endif %}">Technologies</a>
             <a href="/designs" class="{% if active=='designs' %}active{% endif %}">Designs</a>
+            <a href="/metrics/correlation" class="{% if active=='correlation' %}active{% endif %}">Correlations</a>
         </nav>
     </header>
     <div class="container">
