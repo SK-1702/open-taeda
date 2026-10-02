@@ -1,0 +1,302 @@
+{
+  "artifacts": [
+    {
+      "category": "rtl",
+      "path": "results/synthesis/picorv32.v",
+      "sha256": "3ff20c21c8a13b2579b1954e2351c80a65161d36afc05dc88e52379f895e3998",
+      "size_bytes": 1161525
+    },
+    {
+      "category": "def",
+      "path": "results/floorplan/picorv32.def",
+      "sha256": "cf40c02d701ab4a67f9929661359eb7c2d7e93a80da1d87aa1dbe8dd41878518",
+      "size_bytes": 2037374
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/3-initial_fp.def",
+      "sha256": "50e1b72642a07bf1cb4966b9f5d5075c1b9b805fd29c81f5c70e4f7f98aa622f",
+      "size_bytes": 1197442
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/4-io.def",
+      "sha256": "b42e28296fe41b63cbea9ca53a4de6ee621e9ecda88b4943516e0b6913f65649",
+      "size_bytes": 1237444
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/5-tapcell.def",
+      "sha256": "58807b71143d336ca1a682d6c12b6f63bc6efea5c135d9cc71f7d88062706abe",
+      "size_bytes": 1696250
+    },
+    {
+      "category": "odb",
+      "path": "results/floorplan/picorv32.odb",
+      "sha256": "b3047ae9a79af93eeb943bb3f5d8b3702ed16bbbb03f438b79f50e7e203bbb95",
+      "size_bytes": 6950114
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/3-initial_fp.odb",
+      "sha256": "30fb569515316d55b995672b375474120be0a6e69c69e2ac526cf427df7a1fd4",
+      "size_bytes": 5738045
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/4-io.odb",
+      "sha256": "3de6f87f20a363cd146b1a2eef736b8c4b5d6b41b57f69e078577bbe4f1cfe42",
+      "size_bytes": 5760649
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/5-tapcell.odb",
+      "sha256": "501c1a93d6102bf46a7d72491ac769edd4f3f0ad1f7ebcae4bbdf07b48cba473",
+      "size_bytes": 6766879
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.max.lef",
+      "sha256": "5349b6b5169a044d74e7b06de23dfa5c1291954643c7939b984881055a13f3c8",
+      "size_bytes": 1429573
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.min.lef",
+      "sha256": "32db449360a5faaaf295aed4014b518d2101de459fb9a0057c7b926bbf78633c",
+      "size_bytes": 1429570
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.nom.lef",
+      "sha256": "571eee38cf68d6d7af85ec681456982ab6298f7381158c710ea4e1fbb9f4243f",
+      "size_bytes": 1429574
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts-fastest.lib",
+      "sha256": "66b1e1b2ddf0138ad821601b52112b236e7ee809d6ec1ace0dab33e89cdf5d7d",
+      "size_bytes": 11928161
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts-slowest.lib",
+      "sha256": "a127685f8a3819ca0999ba2c0072898c780141b94a111e83c7f8148e31951417",
+      "size_bytes": 11860357
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts.lib",
+      "sha256": "38cf5b72c02b980738b0d4e1da153bfed88314a6dca55208cfe12d79e250c106",
+      "size_bytes": 11856912
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/1-sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib",
+      "sha256": "752d30365594940f21811e41a50c660c3a48f040a7f3cab7ba892aff0c05018f",
+      "size_bytes": 12893507
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/1-trimmed.no_pg.lib",
+      "sha256": "128cbb87c53a4df4c2e44c1a3b136ad3a368c97f8f912a17f52b4956ac2e5dcf",
+      "size_bytes": 6316524
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/merged.lib",
+      "sha256": "7811e84d113dc95d813acb26013f696589556aa48f6fb95ee2f6fb4b53711351",
+      "size_bytes": 12841621
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/trimmed.lib",
+      "sha256": "c18a34b4ed0d598abef343b38aa1175577cafa66b1aeb14d69519b757e35ed14",
+      "size_bytes": 6293484
+    },
+    {
+      "category": "sdc",
+      "path": "tmp/floorplan/3-initial_fp.sdc",
+      "sha256": "e509f0ff9d3c1eb6919258c9fa833f4ef05ead2863b5521a3eb0e4db073f021f",
+      "size_bytes": 67794
+    },
+    {
+      "category": "sdc",
+      "path": "tmp/synthesis/synthesis.sdc",
+      "sha256": "761f591d6e940f44193013d0e478ebe2c968aa01018c7d3b3ea1752caec16685",
+      "size_bytes": 56
+    },
+    {
+      "category": "reports",
+      "path": "reports/floorplan/3-initial_fp_core_area.rpt",
+      "sha256": "ef23b3e3c02a3be43095ad57c2618abb2c0c420cfbc54c9cdd7c027f539911b0",
+      "size_bytes": 24
+    },
+    {
+      "category": "reports",
+      "path": "reports/floorplan/3-initial_fp_die_area.rpt",
+      "sha256": "5068165e59b8faabc34d9fdaf09c69a6f9aa9a312714c39426256b19158365dc",
+      "size_bytes": 23
+    },
+    {
+      "category": "reports",
+      "path": "reports/synthesis/1-synthesis.AREA_0.chk.rpt",
+      "sha256": "a98da4789f572bbe809b76c89c8dd0e79e13e152781db9351536c0e297baa0de",
+      "size_bytes": 20172
+    },
+    {
+      "category": "reports",
+      "path": "reports/synthesis/1-synthesis.AREA_0.stat.rpt",
+      "sha256": "39b75f7dffbf90a4dd1cfd0d26b7eef87b427c4dead7c4a08596b23748dfb353",
+      "size_bytes": 2984
+    },
+    {
+      "category": "reports",
+      "path": "reports/synthesis/1-synthesis_pre_synth.chk.rpt",
+      "sha256": "2c0450f21c36d3a3964395930f8088098e24432cbca6251b43fce366cad1dd53",
+      "size_bytes": 118
+    },
+    {
+      "category": "logs",
+      "path": "cmds.log",
+      "sha256": "4fd8aced15173a546276d80c4ce1d7a777b856d14997fa7b23ebd8d7eaa5bb32",
+      "size_bytes": 6501
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/3-initial_fp.log",
+      "sha256": "e0b26bec99e1ba17cc05d403bfd4602676c615ce8abe4f131ba80ad4801127dd",
+      "size_bytes": 2330
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/4-io.log",
+      "sha256": "fe982a168733ff42e08449046fc5af9ed537ecccd3e560ffb233cad575028e15",
+      "size_bytes": 1128
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/5-tap.log",
+      "sha256": "02c360cf922e8152f339bb6b2c0f0bc14a513b35f1cb7007414de0bc350fd6ed",
+      "size_bytes": 1108
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/6-pdn.log",
+      "sha256": "43d8d775d57227a12ea7a70f6143d512fb8767ff5afac0f8a4d2bad42f7daf3c",
+      "size_bytes": 3829
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/7-pdn.log",
+      "sha256": "428cffc72c27d5306a88a997d873de5d13a69494695d4ee9122493185c9c6369",
+      "size_bytes": 1141
+    },
+    {
+      "category": "logs",
+      "path": "logs/synthesis/1-synthesis.log",
+      "sha256": "a669028a6466e2562d51a42b4cfdcc6b16d28ee1fb6188ab376095960e0ef812",
+      "size_bytes": 224107
+    },
+    {
+      "category": "logs",
+      "path": "logs/synthesis/2-sta.log",
+      "sha256": "6e45ae1649afac204158bd2a508907140603efe1c1a6903a969180f41d9e9e69",
+      "size_bytes": 5639612
+    },
+    {
+      "category": "logs",
+      "path": "openlane.log",
+      "sha256": "7b68b739c4f1b043b99dc3b38f37545686a0a05882a2786eed6c1ab0ff7b8c68",
+      "size_bytes": 1124
+    }
+  ],
+  "capture": {
+    "captured_at": "2026-10-01T18:06:56.818502+00:00",
+    "collector": "open-taeda-openlane-capture",
+    "collector_version": "0.1"
+  },
+  "configuration": {
+    "config.tcl": {
+      "sha256": "341f9c349dd4534ddf75cda24eb7f87ff4e9915c048828bebea24fba88af896e",
+      "size_bytes": 18962
+    }
+  },
+  "experiment": {
+    "status": "CAPTURED",
+    "type": "baseline"
+  },
+  "failures": [],
+  "metrics": {},
+  "provenance": {
+    "artifact_count": 35,
+    "log_count": 9,
+    "report_count": 5,
+    "source_path": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/first_run_pdn_ring_chk0"
+  },
+  "runtime": {
+    "runtime.yaml": "- status: 0 - openlane design prep\n  runtime_s: 3.27\n  runtime_ts: 0h0m3s270ms\n- status: 1 - synthesis - yosys\n  runtime_s: 30.25\n  runtime_ts: 0h0m30s248ms\n- status: 2 - sta - openroad\n  runtime_s: 2.0\n  runtime_ts: 0h0m2s0ms\n- status: 3 - floorplan initialization - openroad\n  runtime_s: 1.03\n  runtime_ts: 0h0m1s26ms\n- status: 4 - ioplace - openroad\n  runtime_s: 0.89\n  runtime_ts: 0h0m0s889ms\n- status: 5 - tap/decap insertion - openroad\n  runtime_s: 0.84\n  runtime_ts: 0h0m0s843ms\n- status: 6 - pdn generation - openroad\n  runtime_s: 1.43\n  runtime_ts: 0h0m1s429ms\n- status: 7 - pdn generation - openroad\n  runtime_s: 0.99\n  runtime_ts: 0h0m0s991ms\n"
+  },
+  "source": {
+    "run_directory": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/first_run_pdn_ring_chk0",
+    "run_name": "first_run_pdn_ring_chk0"
+  },
+  "stages": [
+    {
+      "observed": true,
+      "sequence": 1,
+      "stage": "synthesis"
+    },
+    {
+      "observed": true,
+      "sequence": 2,
+      "stage": "floorplan"
+    },
+    {
+      "observed": true,
+      "sequence": 3,
+      "stage": "placement"
+    },
+    {
+      "observed": true,
+      "sequence": 4,
+      "stage": "cts"
+    },
+    {
+      "observed": true,
+      "sequence": 5,
+      "stage": "routing"
+    },
+    {
+      "observed": false,
+      "sequence": 6,
+      "stage": "extraction"
+    },
+    {
+      "observed": true,
+      "sequence": 7,
+      "stage": "sta"
+    },
+    {
+      "observed": true,
+      "sequence": 8,
+      "stage": "power"
+    },
+    {
+      "observed": false,
+      "sequence": 9,
+      "stage": "drc"
+    },
+    {
+      "observed": false,
+      "sequence": 10,
+      "stage": "lvs"
+    }
+  ],
+  "tools": {
+    "openlane": "ff5509f65b17bfa4068d5336495ab1718987ff69",
+    "openroad": "-exit",
+    "opensta": "2.4.0",
+    "yosys": "-c"
+  }
+}

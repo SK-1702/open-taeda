@@ -1,0 +1,105 @@
+{
+  "artifacts": [
+    {
+      "category": "logs",
+      "path": "cmds.log",
+      "sha256": "39c54f8216d8a46538fe547b0222b7f6f5dcbb75a82a028125c168e6cc75935b",
+      "size_bytes": 350
+    },
+    {
+      "category": "logs",
+      "path": "errors.log",
+      "sha256": "082fb1b062ad475ddfe77bf0750b6bc1f31f591abe56a175029899592f8b0353",
+      "size_bytes": 1071
+    },
+    {
+      "category": "logs",
+      "path": "openlane.log",
+      "sha256": "8b73de7979355475b7a95d7bf993c6f283412ee02f1c4b3b5a20719abf659dd5",
+      "size_bytes": 1269
+    }
+  ],
+  "capture": {
+    "captured_at": "2026-10-01T17:45:42.810634+00:00",
+    "collector": "open-taeda-openlane-capture",
+    "collector_version": "0.1"
+  },
+  "configuration": {
+    "config.tcl": {
+      "sha256": "8d5cb56c674759d516ab8fb1d2270ffb079d72fbdc8f3ef542fd0cf7c2e562c6",
+      "size_bytes": 19566
+    }
+  },
+  "experiment": {
+    "status": "CAPTURED",
+    "type": "baseline"
+  },
+  "failures": [],
+  "metrics": {},
+  "provenance": {
+    "artifact_count": 3,
+    "log_count": 3,
+    "report_count": 0,
+    "source_path": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/RUN_2026.06.19_19.02.28"
+  },
+  "runtime": {},
+  "source": {
+    "run_directory": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/RUN_2026.06.19_19.02.28",
+    "run_name": "RUN_2026.06.19_19.02.28"
+  },
+  "stages": [
+    {
+      "observed": false,
+      "sequence": 1,
+      "stage": "synthesis"
+    },
+    {
+      "observed": false,
+      "sequence": 2,
+      "stage": "floorplan"
+    },
+    {
+      "observed": false,
+      "sequence": 3,
+      "stage": "placement"
+    },
+    {
+      "observed": false,
+      "sequence": 4,
+      "stage": "cts"
+    },
+    {
+      "observed": false,
+      "sequence": 5,
+      "stage": "routing"
+    },
+    {
+      "observed": false,
+      "sequence": 6,
+      "stage": "extraction"
+    },
+    {
+      "observed": false,
+      "sequence": 7,
+      "stage": "sta"
+    },
+    {
+      "observed": false,
+      "sequence": 8,
+      "stage": "power"
+    },
+    {
+      "observed": false,
+      "sequence": 9,
+      "stage": "drc"
+    },
+    {
+      "observed": false,
+      "sequence": 10,
+      "stage": "lvs"
+    }
+  ],
+  "tools": {
+    "openroad": "-exit"
+  }
+}

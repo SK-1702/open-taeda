@@ -1,0 +1,161 @@
+{
+  "artifacts": [
+    {
+      "category": "rtl",
+      "path": "results/final/verilog/gl/picorv32.v",
+      "sha256": "4fa1a4fc705549e5d1102f97102ea9c60e27f866848069a85b39acc1d85be2d0",
+      "size_bytes": 1996652
+    },
+    {
+      "category": "rtl",
+      "path": "results/final/verilog/pnl/picorv32.pnl.v",
+      "sha256": "fcf6c6e7ed8b909c3435999702e5fe9a3cbc434c34ba1611cbbf429de4fa5a35",
+      "size_bytes": 2556812
+    },
+    {
+      "category": "def",
+      "path": "results/final/def/picorv32.def",
+      "sha256": "ea296c36b38d2ce253cfc7fdafc20144e817cc166be38ac385c4b0be1b6a086a",
+      "size_bytes": 35901876
+    },
+    {
+      "category": "def",
+      "path": "results/routing/picorv32.def",
+      "sha256": "ea296c36b38d2ce253cfc7fdafc20144e817cc166be38ac385c4b0be1b6a086a",
+      "size_bytes": 35901876
+    },
+    {
+      "category": "odb",
+      "path": "results/final/odb/picorv32.odb",
+      "sha256": "a289106608d9e24f1973eb6c4679b4d292d01a891520f2763e18db1f27d653ec",
+      "size_bytes": 62047595
+    },
+    {
+      "category": "odb",
+      "path": "results/routing/picorv32.odb",
+      "sha256": "a289106608d9e24f1973eb6c4679b4d292d01a891520f2763e18db1f27d653ec",
+      "size_bytes": 62047595
+    },
+    {
+      "category": "netlist",
+      "path": "results/final/verilog/pnl/picorv32.pnl.v",
+      "sha256": "fcf6c6e7ed8b909c3435999702e5fe9a3cbc434c34ba1611cbbf429de4fa5a35",
+      "size_bytes": 2556812
+    },
+    {
+      "category": "reports",
+      "path": "reports/signoff/25-antenna_violators.rpt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "category": "logs",
+      "path": "logs/routing/23-detailed.log",
+      "sha256": "28444c345d912c2f0d3211ccab5d7711c90471602d3c2679e31dbfe7ff634d4d",
+      "size_bytes": 31174
+    },
+    {
+      "category": "logs",
+      "path": "logs/signoff/25-arc.log",
+      "sha256": "7f22f2cfe3b12f56c308137d500798430e7cde19e62b91dda0cbd1cf65bce234",
+      "size_bytes": 2280
+    },
+    {
+      "category": "logs",
+      "path": "logs/signoff/31-signoff_sta.log",
+      "sha256": "8eb86fbd99798fdd73e70bd1d51ec5172a874da438c191ab44175e8e3fe33399",
+      "size_bytes": 11263606
+    },
+    {
+      "category": "logs",
+      "path": "logs/signoff/33-write_views.log",
+      "sha256": "a5b83167f3b7e6ef1c08fdf3c99be8281e042cf9ebed52e76dca0b80da3fa9ae",
+      "size_bytes": 2872
+    }
+  ],
+  "capture": {
+    "captured_at": "2026-10-01T18:03:34.663431+00:00",
+    "collector": "open-taeda-openlane-capture",
+    "collector_version": "0.1"
+  },
+  "configuration": {
+    "config.tcl": {
+      "sha256": "efeb3774426ef0819739f27da99c02b5917bb7c61fa412b14f9b99c54cbfc978",
+      "size_bytes": 22009
+    }
+  },
+  "experiment": {
+    "status": "CAPTURED",
+    "type": "baseline"
+  },
+  "failures": [],
+  "metrics": {
+    "vias": 14.0
+  },
+  "provenance": {
+    "artifact_count": 12,
+    "log_count": 4,
+    "report_count": 1,
+    "source_path": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp6"
+  },
+  "runtime": {},
+  "source": {
+    "run_directory": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/asap7_picorv32_research_exp6",
+    "run_name": "asap7_picorv32_research_exp6"
+  },
+  "stages": [
+    {
+      "observed": false,
+      "sequence": 1,
+      "stage": "synthesis"
+    },
+    {
+      "observed": false,
+      "sequence": 2,
+      "stage": "floorplan"
+    },
+    {
+      "observed": false,
+      "sequence": 3,
+      "stage": "placement"
+    },
+    {
+      "observed": false,
+      "sequence": 4,
+      "stage": "cts"
+    },
+    {
+      "observed": true,
+      "sequence": 5,
+      "stage": "routing"
+    },
+    {
+      "observed": false,
+      "sequence": 6,
+      "stage": "extraction"
+    },
+    {
+      "observed": true,
+      "sequence": 7,
+      "stage": "sta"
+    },
+    {
+      "observed": true,
+      "sequence": 8,
+      "stage": "power"
+    },
+    {
+      "observed": false,
+      "sequence": 9,
+      "stage": "drc"
+    },
+    {
+      "observed": false,
+      "sequence": 10,
+      "stage": "lvs"
+    }
+  ],
+  "tools": {
+    "openroad": "26Q2-2115-g14b1ef1329"
+  }
+}

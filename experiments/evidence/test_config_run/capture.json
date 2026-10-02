@@ -1,0 +1,193 @@
+{
+  "artifacts": [
+    {
+      "category": "lef",
+      "path": "tmp/merged.max.lef",
+      "sha256": "5349b6b5169a044d74e7b06de23dfa5c1291954643c7939b984881055a13f3c8",
+      "size_bytes": 1429573
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.min.lef",
+      "sha256": "32db449360a5faaaf295aed4014b518d2101de459fb9a0057c7b926bbf78633c",
+      "size_bytes": 1429570
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.nom.lef",
+      "sha256": "571eee38cf68d6d7af85ec681456982ab6298f7381158c710ea4e1fbb9f4243f",
+      "size_bytes": 1429574
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts-fastest.lib",
+      "sha256": "66b1e1b2ddf0138ad821601b52112b236e7ee809d6ec1ace0dab33e89cdf5d7d",
+      "size_bytes": 11928161
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts-slowest.lib",
+      "sha256": "a127685f8a3819ca0999ba2c0072898c780141b94a111e83c7f8148e31951417",
+      "size_bytes": 11860357
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts.lib",
+      "sha256": "38cf5b72c02b980738b0d4e1da153bfed88314a6dca55208cfe12d79e250c106",
+      "size_bytes": 11856912
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/1-sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib",
+      "sha256": "752d30365594940f21811e41a50c660c3a48f040a7f3cab7ba892aff0c05018f",
+      "size_bytes": 12893507
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/1-trimmed.no_pg.lib",
+      "sha256": "128cbb87c53a4df4c2e44c1a3b136ad3a368c97f8f912a17f52b4956ac2e5dcf",
+      "size_bytes": 6316524
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/merged.lib",
+      "sha256": "7811e84d113dc95d813acb26013f696589556aa48f6fb95ee2f6fb4b53711351",
+      "size_bytes": 12841621
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/trimmed.lib",
+      "sha256": "c18a34b4ed0d598abef343b38aa1175577cafa66b1aeb14d69519b757e35ed14",
+      "size_bytes": 6293484
+    },
+    {
+      "category": "sdc",
+      "path": "tmp/synthesis/synthesis.sdc",
+      "sha256": "761f591d6e940f44193013d0e478ebe2c968aa01018c7d3b3ea1752caec16685",
+      "size_bytes": 56
+    },
+    {
+      "category": "reports",
+      "path": "reports/synthesis/1-synthesis_pre_synth.chk.rpt",
+      "sha256": "2c0450f21c36d3a3964395930f8088098e24432cbca6251b43fce366cad1dd53",
+      "size_bytes": 118
+    },
+    {
+      "category": "logs",
+      "path": "cmds.log",
+      "sha256": "afb501ad4292b9c872dc3f66285a2869eccf03c6cecda82a3a55a6fd1a06ebd2",
+      "size_bytes": 5620
+    },
+    {
+      "category": "logs",
+      "path": "logs/synthesis/1-synthesis.log",
+      "sha256": "bbd629e72077a66d46bd94cfcbac21df327b02e4cf4e298e1fde03f67372ceff",
+      "size_bytes": 111860
+    },
+    {
+      "category": "logs",
+      "path": "logs/synthesis/linter.log",
+      "sha256": "bc1c0f838704d10454f0c5e5dd3649e2b88fc645d30ab8559de61100d56b5766",
+      "size_bytes": 19514
+    },
+    {
+      "category": "logs",
+      "path": "openlane.log",
+      "sha256": "57451b51434877e5b69fd2cbc7e16cbb4a97e2741fed678feca8e52c38d036b6",
+      "size_bytes": 578
+    },
+    {
+      "category": "logs",
+      "path": "warnings.log",
+      "sha256": "06d7f45a48312382e4210d86cd544a2ae12fb85c720f82223eef79cb07daadfe",
+      "size_bytes": 39
+    }
+  ],
+  "capture": {
+    "captured_at": "2026-10-02T01:38:58.848853+00:00",
+    "collector": "open-taeda-openlane-capture",
+    "collector_version": "0.1"
+  },
+  "configuration": {
+    "config.tcl": {
+      "sha256": "12f00723d11897905c7d206a2cd1df3c1b19ed8940f94733e9a4f51ce7e272c2",
+      "size_bytes": 19770
+    }
+  },
+  "experiment": {
+    "status": "CAPTURED",
+    "type": "baseline"
+  },
+  "failures": [],
+  "metrics": {},
+  "provenance": {
+    "artifact_count": 17,
+    "log_count": 5,
+    "report_count": 1,
+    "source_path": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/test_config_run"
+  },
+  "runtime": {
+    "runtime.yaml": "- status: 0 - openlane design prep\n  runtime_s: 6.11\n  runtime_ts: 0h0m6s105ms\n"
+  },
+  "source": {
+    "run_directory": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/test_config_run",
+    "run_name": "test_config_run"
+  },
+  "stages": [
+    {
+      "observed": true,
+      "sequence": 1,
+      "stage": "synthesis"
+    },
+    {
+      "observed": false,
+      "sequence": 2,
+      "stage": "floorplan"
+    },
+    {
+      "observed": false,
+      "sequence": 3,
+      "stage": "placement"
+    },
+    {
+      "observed": true,
+      "sequence": 4,
+      "stage": "cts"
+    },
+    {
+      "observed": true,
+      "sequence": 5,
+      "stage": "routing"
+    },
+    {
+      "observed": false,
+      "sequence": 6,
+      "stage": "extraction"
+    },
+    {
+      "observed": false,
+      "sequence": 7,
+      "stage": "sta"
+    },
+    {
+      "observed": false,
+      "sequence": 8,
+      "stage": "power"
+    },
+    {
+      "observed": false,
+      "sequence": 9,
+      "stage": "drc"
+    },
+    {
+      "observed": false,
+      "sequence": 10,
+      "stage": "lvs"
+    }
+  ],
+  "tools": {
+    "openlane": "ff5509f65b17bfa4068d5336495ab1718987ff69",
+    "openroad": "-exit",
+    "yosys": "-c"
+  }
+}

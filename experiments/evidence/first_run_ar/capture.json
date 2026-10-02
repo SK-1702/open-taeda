@@ -1,0 +1,452 @@
+{
+  "artifacts": [
+    {
+      "category": "rtl",
+      "path": "results/synthesis/picorv32.v",
+      "sha256": "3ff20c21c8a13b2579b1954e2351c80a65161d36afc05dc88e52379f895e3998",
+      "size_bytes": 1161525
+    },
+    {
+      "category": "def",
+      "path": "results/floorplan/picorv32.def",
+      "sha256": "48a75fa8f2ef432fed83be59e4e85e8fb34ae93bf326bce33aefe5425ed745fa",
+      "size_bytes": 2075732
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/11-initial_fp.def",
+      "sha256": "8a8193bb435cf71e4c30f512a9192a15c6863bd4127e7be18f3cb0213260504a",
+      "size_bytes": 1851468
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/12-io.def",
+      "sha256": "3c4a7c92457f046019b3e3ab060dba61fbf1de5c196fc3fba78a165a90bd4f99",
+      "size_bytes": 1891473
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/13-tapcell.def",
+      "sha256": "301cfe4d89f5e7ad5e588c5d460d4760da159914a131a66f0120af5bf4d6aa12",
+      "size_bytes": 2578066
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/3-initial_fp.def",
+      "sha256": "50e1b72642a07bf1cb4966b9f5d5075c1b9b805fd29c81f5c70e4f7f98aa622f",
+      "size_bytes": 1197442
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/4-io.def",
+      "sha256": "b42e28296fe41b63cbea9ca53a4de6ee621e9ecda88b4943516e0b6913f65649",
+      "size_bytes": 1237444
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/5-tapcell.def",
+      "sha256": "58807b71143d336ca1a682d6c12b6f63bc6efea5c135d9cc71f7d88062706abe",
+      "size_bytes": 1696250
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/7-initial_fp.def",
+      "sha256": "de505734847c4d69fa054afef24bc8a39036e1dadfb8ebdfcaca75580f2b27cc",
+      "size_bytes": 1842844
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/8-io.def",
+      "sha256": "7e179dd1bf32d0ec6fec602af840236c12335e8071a36a8db48bf7f6aa4bda32",
+      "size_bytes": 1882854
+    },
+    {
+      "category": "def",
+      "path": "tmp/floorplan/9-tapcell.def",
+      "sha256": "b7e07cd0b7ccebc5ec7faac9b38d53b9a78d441220fc9c2ed6f497a484de74cc",
+      "size_bytes": 2536819
+    },
+    {
+      "category": "odb",
+      "path": "results/floorplan/picorv32.odb",
+      "sha256": "e1291c917a3bee43bc4cd77a342a5990093814e22fa60e86321b35f66b100cc3",
+      "size_bytes": 7007473
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/11-initial_fp.odb",
+      "sha256": "aa94e921f4139b955ae2e13180550fc5a9a1aba9737d39c3cbc7228497eec5a2",
+      "size_bytes": 5743381
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/12-io.odb",
+      "sha256": "2c441b9b3cf5ad6d1dfbf25fb5460d9a0a307549a545dba0a5fa9a61c6c64eaf",
+      "size_bytes": 5766047
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/13-tapcell.odb",
+      "sha256": "5f0cf3b375c3314d1ee3ee203d2bee717bee07e14124886017c53b2787e5ef73",
+      "size_bytes": 6813952
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/3-initial_fp.odb",
+      "sha256": "30fb569515316d55b995672b375474120be0a6e69c69e2ac526cf427df7a1fd4",
+      "size_bytes": 5738045
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/4-io.odb",
+      "sha256": "3de6f87f20a363cd146b1a2eef736b8c4b5d6b41b57f69e078577bbe4f1cfe42",
+      "size_bytes": 5760649
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/5-tapcell.odb",
+      "sha256": "501c1a93d6102bf46a7d72491ac769edd4f3f0ad1f7ebcae4bbdf07b48cba473",
+      "size_bytes": 6766879
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/7-initial_fp.odb",
+      "sha256": "d8ab09bf14a315bcf2fe967c65cc6e6933999d570a9d284fdb3d703438ce06d9",
+      "size_bytes": 5737429
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/8-io.odb",
+      "sha256": "1b2c6ffcb023bcab82ada3e23f620b1e3083f13c8285b7d577262427776bfef8",
+      "size_bytes": 5760095
+    },
+    {
+      "category": "odb",
+      "path": "tmp/floorplan/9-tapcell.odb",
+      "sha256": "50744d16b40cad2a0c13bd01039aebdf5b8192ae432ba82f8a4d3943f3077a0e",
+      "size_bytes": 6753703
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.max.lef",
+      "sha256": "5349b6b5169a044d74e7b06de23dfa5c1291954643c7939b984881055a13f3c8",
+      "size_bytes": 1429573
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.min.lef",
+      "sha256": "32db449360a5faaaf295aed4014b518d2101de459fb9a0057c7b926bbf78633c",
+      "size_bytes": 1429570
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.nom.lef",
+      "sha256": "571eee38cf68d6d7af85ec681456982ab6298f7381158c710ea4e1fbb9f4243f",
+      "size_bytes": 1429574
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts-fastest.lib",
+      "sha256": "66b1e1b2ddf0138ad821601b52112b236e7ee809d6ec1ace0dab33e89cdf5d7d",
+      "size_bytes": 11928161
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts-slowest.lib",
+      "sha256": "a127685f8a3819ca0999ba2c0072898c780141b94a111e83c7f8148e31951417",
+      "size_bytes": 11860357
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts.lib",
+      "sha256": "38cf5b72c02b980738b0d4e1da153bfed88314a6dca55208cfe12d79e250c106",
+      "size_bytes": 11856912
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/1-sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib",
+      "sha256": "752d30365594940f21811e41a50c660c3a48f040a7f3cab7ba892aff0c05018f",
+      "size_bytes": 12893507
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/1-trimmed.no_pg.lib",
+      "sha256": "128cbb87c53a4df4c2e44c1a3b136ad3a368c97f8f912a17f52b4956ac2e5dcf",
+      "size_bytes": 6316524
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/merged.lib",
+      "sha256": "7811e84d113dc95d813acb26013f696589556aa48f6fb95ee2f6fb4b53711351",
+      "size_bytes": 12841621
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/trimmed.lib",
+      "sha256": "c18a34b4ed0d598abef343b38aa1175577cafa66b1aeb14d69519b757e35ed14",
+      "size_bytes": 6293484
+    },
+    {
+      "category": "sdc",
+      "path": "tmp/floorplan/11-initial_fp.sdc",
+      "sha256": "4763d39d37e6d08e7fc53fa733cea139bea9dd3c7812580bd6e08ff3d7c93eab",
+      "size_bytes": 67794
+    },
+    {
+      "category": "sdc",
+      "path": "tmp/floorplan/3-initial_fp.sdc",
+      "sha256": "fb974b030fe0e5adfc920fb962d620349920d70a45c6120e6602293a0a1c55b2",
+      "size_bytes": 67794
+    },
+    {
+      "category": "sdc",
+      "path": "tmp/floorplan/7-initial_fp.sdc",
+      "sha256": "9be471b68bee360839ce5187a6bee66350e5d501eaf1fca5831486d06f3adf07",
+      "size_bytes": 67794
+    },
+    {
+      "category": "sdc",
+      "path": "tmp/synthesis/synthesis.sdc",
+      "sha256": "761f591d6e940f44193013d0e478ebe2c968aa01018c7d3b3ea1752caec16685",
+      "size_bytes": 56
+    },
+    {
+      "category": "reports",
+      "path": "reports/floorplan/11-initial_fp_core_area.rpt",
+      "sha256": "eec519bcf61504b4cc104c0776c5d0078af2bbbaa43c26da91a5a5bce2023d1f",
+      "size_bytes": 24
+    },
+    {
+      "category": "reports",
+      "path": "reports/floorplan/11-initial_fp_die_area.rpt",
+      "sha256": "d712a5b2fb5367e823996485fe489d711539aaec428a6a04b288bd38f64d913e",
+      "size_bytes": 22
+    },
+    {
+      "category": "reports",
+      "path": "reports/floorplan/3-initial_fp_core_area.rpt",
+      "sha256": "ef23b3e3c02a3be43095ad57c2618abb2c0c420cfbc54c9cdd7c027f539911b0",
+      "size_bytes": 24
+    },
+    {
+      "category": "reports",
+      "path": "reports/floorplan/3-initial_fp_die_area.rpt",
+      "sha256": "5068165e59b8faabc34d9fdaf09c69a6f9aa9a312714c39426256b19158365dc",
+      "size_bytes": 23
+    },
+    {
+      "category": "reports",
+      "path": "reports/floorplan/7-initial_fp_core_area.rpt",
+      "sha256": "14138edd3b3d22ae9862574967171afe3354ff745eb824afc3ab4d08d62c6ad8",
+      "size_bytes": 23
+    },
+    {
+      "category": "reports",
+      "path": "reports/floorplan/7-initial_fp_die_area.rpt",
+      "sha256": "33932bb95d3f06aaf444a5becf31b091cc4840522cc95559600448824c7603c0",
+      "size_bytes": 23
+    },
+    {
+      "category": "reports",
+      "path": "reports/synthesis/1-synthesis.AREA_0.chk.rpt",
+      "sha256": "a98da4789f572bbe809b76c89c8dd0e79e13e152781db9351536c0e297baa0de",
+      "size_bytes": 20172
+    },
+    {
+      "category": "reports",
+      "path": "reports/synthesis/1-synthesis.AREA_0.stat.rpt",
+      "sha256": "39b75f7dffbf90a4dd1cfd0d26b7eef87b427c4dead7c4a08596b23748dfb353",
+      "size_bytes": 2984
+    },
+    {
+      "category": "reports",
+      "path": "reports/synthesis/1-synthesis_pre_synth.chk.rpt",
+      "sha256": "2c0450f21c36d3a3964395930f8088098e24432cbca6251b43fce366cad1dd53",
+      "size_bytes": 118
+    },
+    {
+      "category": "logs",
+      "path": "cmds.log",
+      "sha256": "4f5075ebf118d85b2a53dabc1343c9aa31f46812485877d41b6112ffb23cb582",
+      "size_bytes": 8195
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/10-pdn.log",
+      "sha256": "69f04b3a9451e433a5d616ea7474188f1fe9289fbee31d55190a4beb5ea0a96b",
+      "size_bytes": 3443
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/11-initial_fp.log",
+      "sha256": "9e0aaa3411d4431f78c5604500f3f07e5e8dd08426686bd0dfeadd2bce687f0a",
+      "size_bytes": 2115
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/12-io.log",
+      "sha256": "feb1650b6073255aa2088aab2c9f4a6e0974fe242ba17f59e3519f7536029288",
+      "size_bytes": 1140
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/13-tap.log",
+      "sha256": "65384e61169cf1a68e6e526dd74b418c91c071a509f0b09e7f5a2239fb601861",
+      "size_bytes": 1120
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/14-pdn.log",
+      "sha256": "94f3ec23922870c728932d16eabaf07b62b7ee63c22f3d4599d21e25c9af7121",
+      "size_bytes": 3445
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/3-initial_fp.log",
+      "sha256": "9ef5012566e48e523020c460a97e2240f349047db96c5d185cfef87406c09a24",
+      "size_bytes": 2242
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/4-io.log",
+      "sha256": "f24c7233559b4fe243e8ac366abc7c93980a1d9b4807adaae53c6a1dc6bd57f2",
+      "size_bytes": 1084
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/5-tap.log",
+      "sha256": "2dbbb6ee2a22436514848e7015a7737023d262af5cb6e1ce20dd5fc0a87fcc80",
+      "size_bytes": 1064
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/6-pdn.log",
+      "sha256": "d9c7dbce454a293b51802fab95030282fc95a768043cde8cbe5bd722bbaffc83",
+      "size_bytes": 3785
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/7-initial_fp.log",
+      "sha256": "c19c2befa22f9ee460c6442b455f011b7d9342c5d182eefe7783016d1981ce13",
+      "size_bytes": 2111
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/8-io.log",
+      "sha256": "6488d6ff2edbd10203d214d008ae135e80c6a78fa1f3e39cc214dd8252414b09",
+      "size_bytes": 1136
+    },
+    {
+      "category": "logs",
+      "path": "logs/floorplan/9-tap.log",
+      "sha256": "a1f1ca2f63069749a359806240d40167d2ccf858b07bff2903dbf3e9b51d5624",
+      "size_bytes": 1116
+    },
+    {
+      "category": "logs",
+      "path": "logs/synthesis/1-synthesis.log",
+      "sha256": "7264efd1a3b8f6d2a104727adf1095314c0ea12d60e62a5d2f136dfbfb30bc26",
+      "size_bytes": 224041
+    },
+    {
+      "category": "logs",
+      "path": "logs/synthesis/2-sta.log",
+      "sha256": "d9648dabf3ac298aa9e36442c9fe3ad839c963bcda2b17674cde52d14a6461f5",
+      "size_bytes": 5639590
+    },
+    {
+      "category": "logs",
+      "path": "openlane.log",
+      "sha256": "c7f833cb28eb7690de8d36a7b163e19f9bb780aaceee63ae4698bada8a5686b9",
+      "size_bytes": 1893
+    }
+  ],
+  "capture": {
+    "captured_at": "2026-10-01T18:06:34.760595+00:00",
+    "collector": "open-taeda-openlane-capture",
+    "collector_version": "0.1"
+  },
+  "configuration": {
+    "config.tcl": {
+      "sha256": "de4551c09267db87479306017eb26fdb81d10e74b288548d74f90dd74dbc45fd",
+      "size_bytes": 18589
+    }
+  },
+  "experiment": {
+    "status": "CAPTURED",
+    "type": "baseline"
+  },
+  "failures": [],
+  "metrics": {},
+  "provenance": {
+    "artifact_count": 60,
+    "log_count": 16,
+    "report_count": 9,
+    "source_path": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/first_run_ar"
+  },
+  "runtime": {
+    "runtime.yaml": "- status: 0 - openlane design prep\n  runtime_s: 3.91\n  runtime_ts: 0h0m3s911ms\n- status: 1 - synthesis - yosys\n  runtime_s: 30.86\n  runtime_ts: 0h0m30s862ms\n- status: 2 - sta - openroad\n  runtime_s: 2.11\n  runtime_ts: 0h0m2s105ms\n- status: 3 - floorplan initialization - openroad\n  runtime_s: 1.29\n  runtime_ts: 0h0m1s286ms\n- status: 4 - ioplace - openroad\n  runtime_s: 0.88\n  runtime_ts: 0h0m0s875ms\n- status: 5 - tap/decap insertion - openroad\n  runtime_s: 0.89\n  runtime_ts: 0h0m0s889ms\n- status: 6 - pdn generation - openroad\n  runtime_s: 1.43\n  runtime_ts: 0h0m1s427ms\n- status: 7 - floorplan initialization - openroad\n  runtime_s: 1.22\n  runtime_ts: 0h0m1s217ms\n- status: 8 - ioplace - openroad\n  runtime_s: 0.91\n  runtime_ts: 0h0m0s911ms\n- status: 9 - tap/decap insertion - openroad\n  runtime_s: 0.93\n  runtime_ts: 0h0m0s930ms\n- status: 10 - pdn generation - openroad\n  runtime_s: 1.36\n  runtime_ts: 0h0m1s362ms\n- status: 11 - floorplan initialization - openroad\n  runtime_s: 1.28\n  runtime_ts: 0h0m1s278ms\n- status: 12 - ioplace - openroad\n  runtime_s: 1.0\n  runtime_ts: 0h0m0s999ms\n- status: 13 - tap/decap insertion - openroad\n  runtime_s: 0.94\n  runtime_ts: 0h0m0s936ms\n- status: 14 - pdn generation - openroad\n  runtime_s: 1.55\n  runtime_ts: 0h0m1s552ms\n"
+  },
+  "source": {
+    "run_directory": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/first_run_ar",
+    "run_name": "first_run_ar"
+  },
+  "stages": [
+    {
+      "observed": true,
+      "sequence": 1,
+      "stage": "synthesis"
+    },
+    {
+      "observed": true,
+      "sequence": 2,
+      "stage": "floorplan"
+    },
+    {
+      "observed": true,
+      "sequence": 3,
+      "stage": "placement"
+    },
+    {
+      "observed": true,
+      "sequence": 4,
+      "stage": "cts"
+    },
+    {
+      "observed": true,
+      "sequence": 5,
+      "stage": "routing"
+    },
+    {
+      "observed": false,
+      "sequence": 6,
+      "stage": "extraction"
+    },
+    {
+      "observed": true,
+      "sequence": 7,
+      "stage": "sta"
+    },
+    {
+      "observed": true,
+      "sequence": 8,
+      "stage": "power"
+    },
+    {
+      "observed": false,
+      "sequence": 9,
+      "stage": "drc"
+    },
+    {
+      "observed": false,
+      "sequence": 10,
+      "stage": "lvs"
+    }
+  ],
+  "tools": {
+    "openlane": "ff5509f65b17bfa4068d5336495ab1718987ff69",
+    "openroad": "-exit",
+    "opensta": "2.4.0",
+    "yosys": "-c"
+  }
+}

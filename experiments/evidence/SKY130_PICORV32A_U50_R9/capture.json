@@ -1,0 +1,173 @@
+{
+  "artifacts": [
+    {
+      "category": "lef",
+      "path": "tmp/merged.max.lef",
+      "sha256": "5349b6b5169a044d74e7b06de23dfa5c1291954643c7939b984881055a13f3c8",
+      "size_bytes": 1429573
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.min.lef",
+      "sha256": "32db449360a5faaaf295aed4014b518d2101de459fb9a0057c7b926bbf78633c",
+      "size_bytes": 1429570
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.nom.lef",
+      "sha256": "571eee38cf68d6d7af85ec681456982ab6298f7381158c710ea4e1fbb9f4243f",
+      "size_bytes": 1429574
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts-fastest.lib",
+      "sha256": "66b1e1b2ddf0138ad821601b52112b236e7ee809d6ec1ace0dab33e89cdf5d7d",
+      "size_bytes": 11928161
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts-slowest.lib",
+      "sha256": "a127685f8a3819ca0999ba2c0072898c780141b94a111e83c7f8148e31951417",
+      "size_bytes": 11860357
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts.lib",
+      "sha256": "38cf5b72c02b980738b0d4e1da153bfed88314a6dca55208cfe12d79e250c106",
+      "size_bytes": 11856912
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/merged.lib",
+      "sha256": "7811e84d113dc95d813acb26013f696589556aa48f6fb95ee2f6fb4b53711351",
+      "size_bytes": 12841621
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/trimmed.lib",
+      "sha256": "c18a34b4ed0d598abef343b38aa1175577cafa66b1aeb14d69519b757e35ed14",
+      "size_bytes": 6293484
+    },
+    {
+      "category": "logs",
+      "path": "cmds.log",
+      "sha256": "9da3ab8b39486a4c3a9c7e1c1305e9bcb05502a8e1f45cd8fb6e43449f781642",
+      "size_bytes": 5246
+    },
+    {
+      "category": "logs",
+      "path": "errors.log",
+      "sha256": "98fb499a7b493dbbe0e2ed1b8d871359c8c353d880ecc213c56576e4c5958d6f",
+      "size_bytes": 1808
+    },
+    {
+      "category": "logs",
+      "path": "logs/signoff/1-parasitics_extraction.min.log",
+      "sha256": "a63e94e9311b1510d8933726663cd99275edfbef7ad6a52ee559fbf8f2ee9cf9",
+      "size_bytes": 508
+    },
+    {
+      "category": "logs",
+      "path": "logs/signoff/2-irdrop.log",
+      "sha256": "82644dee1d6727bf88adc29170bd99ce6f4a46d149749e7c6436fdd91d55a409",
+      "size_bytes": 971
+    },
+    {
+      "category": "logs",
+      "path": "openlane.log",
+      "sha256": "d405ea82ddf99cc0494f21099a15f4ee1d91196a1afe2d30053dc0f7445798bf",
+      "size_bytes": 2785
+    },
+    {
+      "category": "logs",
+      "path": "warnings.log",
+      "sha256": "77ccda82a9ae64949da2de09262ccef23e4f3df185bec17ec21e024a09d7a551",
+      "size_bytes": 107
+    }
+  ],
+  "capture": {
+    "captured_at": "2026-10-01T17:53:02.472032+00:00",
+    "collector": "open-taeda-openlane-capture",
+    "collector_version": "0.1"
+  },
+  "configuration": {
+    "config.tcl": {
+      "sha256": "4b1021e5c2a79001645f5c696bdf2baeda79383e4a49de63dbce8fa730ea02bb",
+      "size_bytes": 24644
+    }
+  },
+  "experiment": {
+    "status": "CAPTURED",
+    "type": "baseline"
+  },
+  "failures": [],
+  "metrics": {},
+  "provenance": {
+    "artifact_count": 14,
+    "log_count": 6,
+    "report_count": 0,
+    "source_path": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50_R9"
+  },
+  "runtime": {
+    "runtime.yaml": "- status: 0 - openlane design prep\n  runtime_s: 4.06\n  runtime_ts: 0h0m4s57ms\n"
+  },
+  "source": {
+    "run_directory": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/SKY130_PICORV32A_U50_R9",
+    "run_name": "SKY130_PICORV32A_U50_R9"
+  },
+  "stages": [
+    {
+      "observed": true,
+      "sequence": 1,
+      "stage": "synthesis"
+    },
+    {
+      "observed": false,
+      "sequence": 2,
+      "stage": "floorplan"
+    },
+    {
+      "observed": false,
+      "sequence": 3,
+      "stage": "placement"
+    },
+    {
+      "observed": true,
+      "sequence": 4,
+      "stage": "cts"
+    },
+    {
+      "observed": true,
+      "sequence": 5,
+      "stage": "routing"
+    },
+    {
+      "observed": true,
+      "sequence": 6,
+      "stage": "extraction"
+    },
+    {
+      "observed": true,
+      "sequence": 7,
+      "stage": "sta"
+    },
+    {
+      "observed": true,
+      "sequence": 8,
+      "stage": "power"
+    },
+    {
+      "observed": false,
+      "sequence": 9,
+      "stage": "drc"
+    },
+    {
+      "observed": false,
+      "sequence": 10,
+      "stage": "lvs"
+    }
+  ],
+  "tools": {
+    "openroad": "-exit"
+  }
+}

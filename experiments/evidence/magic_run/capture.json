@@ -1,0 +1,168 @@
+{
+  "artifacts": [
+    {
+      "category": "lef",
+      "path": "tmp/merged.max.lef",
+      "sha256": "5349b6b5169a044d74e7b06de23dfa5c1291954643c7939b984881055a13f3c8",
+      "size_bytes": 1429573
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.min.lef",
+      "sha256": "32db449360a5faaaf295aed4014b518d2101de459fb9a0057c7b926bbf78633c",
+      "size_bytes": 1429570
+    },
+    {
+      "category": "lef",
+      "path": "tmp/merged.nom.lef",
+      "sha256": "571eee38cf68d6d7af85ec681456982ab6298f7381158c710ea4e1fbb9f4243f",
+      "size_bytes": 1429574
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts-fastest.lib",
+      "sha256": "66b1e1b2ddf0138ad821601b52112b236e7ee809d6ec1ace0dab33e89cdf5d7d",
+      "size_bytes": 11928161
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts-slowest.lib",
+      "sha256": "a127685f8a3819ca0999ba2c0072898c780141b94a111e83c7f8148e31951417",
+      "size_bytes": 11860357
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/cts/cts.lib",
+      "sha256": "38cf5b72c02b980738b0d4e1da153bfed88314a6dca55208cfe12d79e250c106",
+      "size_bytes": 11856912
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/merged.lib",
+      "sha256": "7811e84d113dc95d813acb26013f696589556aa48f6fb95ee2f6fb4b53711351",
+      "size_bytes": 12841621
+    },
+    {
+      "category": "liberty",
+      "path": "tmp/synthesis/trimmed.lib",
+      "sha256": "c18a34b4ed0d598abef343b38aa1175577cafa66b1aeb14d69519b757e35ed14",
+      "size_bytes": 6293484
+    },
+    {
+      "category": "logs",
+      "path": "cmds.log",
+      "sha256": "2080677772e7bde7023a6e3f92ccf4440bfc8a06635f305f9681d7ccfb1b2e85",
+      "size_bytes": 3975
+    },
+    {
+      "category": "logs",
+      "path": "errors.log",
+      "sha256": "b1b695a06c0b72cedcc53861d16b65bd09450b0276e8ee033c746b3961d5ff7f",
+      "size_bytes": 1455
+    },
+    {
+      "category": "logs",
+      "path": "logs/signoff/1-gdsii.log",
+      "sha256": "23a984c5634c1193bd6acdb3ef85efb518d3374c197cd229ac2ba78cb8ffda15",
+      "size_bytes": 24110
+    },
+    {
+      "category": "logs",
+      "path": "logs/signoff/2-drc.log",
+      "sha256": "cd591d4d1c0b5f56c89a3b649d63baada47af6b86175b50bcf2877aa537f061d",
+      "size_bytes": 653
+    },
+    {
+      "category": "logs",
+      "path": "openlane.log",
+      "sha256": "f3c0c493c6b67ce5f0e47bb3c886a3b4a9826bb61391b567cd58c159a0b945a9",
+      "size_bytes": 2329
+    }
+  ],
+  "capture": {
+    "captured_at": "2026-10-02T01:28:10.986357+00:00",
+    "collector": "open-taeda-openlane-capture",
+    "collector_version": "0.1"
+  },
+  "configuration": {
+    "config.tcl": {
+      "sha256": "b6de77063e97f96cfe98667740de3e91de3aa7a69a4773a27be118b475c31bfb",
+      "size_bytes": 21808
+    }
+  },
+  "experiment": {
+    "status": "CAPTURED",
+    "type": "baseline"
+  },
+  "failures": [],
+  "metrics": {},
+  "provenance": {
+    "artifact_count": 13,
+    "log_count": 5,
+    "report_count": 0,
+    "source_path": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/magic_run"
+  },
+  "runtime": {
+    "runtime.yaml": "- status: 0 - openlane design prep\n  runtime_s: 3.28\n  runtime_ts: 0h0m3s282ms\n"
+  },
+  "source": {
+    "run_directory": "/home/user/eda_tools_universal/OpenLane/designs/picorv32a/runs/magic_run",
+    "run_name": "magic_run"
+  },
+  "stages": [
+    {
+      "observed": true,
+      "sequence": 1,
+      "stage": "synthesis"
+    },
+    {
+      "observed": false,
+      "sequence": 2,
+      "stage": "floorplan"
+    },
+    {
+      "observed": false,
+      "sequence": 3,
+      "stage": "placement"
+    },
+    {
+      "observed": true,
+      "sequence": 4,
+      "stage": "cts"
+    },
+    {
+      "observed": true,
+      "sequence": 5,
+      "stage": "routing"
+    },
+    {
+      "observed": true,
+      "sequence": 6,
+      "stage": "extraction"
+    },
+    {
+      "observed": false,
+      "sequence": 7,
+      "stage": "sta"
+    },
+    {
+      "observed": false,
+      "sequence": 8,
+      "stage": "power"
+    },
+    {
+      "observed": true,
+      "sequence": 9,
+      "stage": "drc"
+    },
+    {
+      "observed": false,
+      "sequence": 10,
+      "stage": "lvs"
+    }
+  ],
+  "tools": {
+    "openlane": "ff5509f65b17bfa4068d5336495ab1718987ff69",
+    "openroad": "-exit"
+  }
+}
