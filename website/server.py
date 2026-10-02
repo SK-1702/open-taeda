@@ -83,6 +83,8 @@ class WebHandler(BaseHTTPRequestHandler):
         elif path.startswith("/designs/"):
             des_id = path.split("/")[-1]
             self.render_design_detail(des_id)
+        elif path == "/metrics/correlation":
+            self.render_metric_correlations(parsed.query)
         elif path == "/api/experiments":
             self.api_list_experiments()
         elif path.startswith("/api/experiments/") and path.endswith("/def"):
@@ -1668,6 +1670,212 @@ class WebHandler(BaseHTTPRequestHandler):
         {nav_bar}
         """
         self.send_html(render_page(f"Doc {doc['id']}: {doc['title']}", content, active="analysis"))
+
+    def render_metric_correlations(self, query_str: str):
+        params = parse_qs(query_str)
+        x_metric = params.get("x", ["cell_count"])[0]
+        y_metric = params.get("y", ["core_area_um2"])[0]
+        tech_filter = params.get("tech", [""])[0]
+
+        conn = get_db_connection()
+        cur = conn.cursor()
+
+        query = """
+            SELECT e.experiment_id, e.name, e.technology_id, e.design_id, e.status, e.experiment_type,
+                   (SELECT value FROM metrics WHERE experiment_id=e.experiment_id AND name='cell_count') as cell_count,
+                   (SELECT value FROM metrics WHERE experiment_id=e.experiment_id AND name='core_area_um2') as core_area_um2,
+                   (SELECT value FROM metrics WHERE experiment_id=e.experiment_id AND name='utilization_pct') as utilization_pct,
+                   (SELECT value FROM metrics WHERE experiment_id=e.experiment_id AND name='wns_ns') as wns_ns,
+                   (SELECT value FROM metrics WHERE experiment_id=e.experiment_id AND name='total_power_mw') as total_power_mw,
+                   (SELECT value FROM metrics WHERE experiment_id=e.experiment_id AND name='wirelength_um') as wirelength_um,
+                   (SELECT value FROM metrics WHERE experiment_id=e.experiment_id AND name='peak_memory_mb') as peak_memory_mb,
+                   (SELECT value FROM metrics WHERE experiment_id=e.experiment_id AND name='drc_errors') as drc_errors
+            FROM experiments e
+        """
+        args = []
+        if tech_filter:
+            query += " WHERE e.technology_id=?"
+            args.append(tech_filter)
+
+        cur.execute(query, args)
+        rows = [dict(r) for r in cur.fetchall()]
+        conn.close()
+
+        metric_labels = {
+            "cell_count": ("Cell Count", "instances"),
+            "core_area_um2": ("Core Area", "μm²"),
+            "utilization_pct": ("Core Utilization", "%"),
+            "wns_ns": ("Worst Negative Slack (WNS)", "ns"),
+            "total_power_mw": ("Total Power", "mW"),
+            "wirelength_um": ("Total Wirelength", "μm"),
+            "peak_memory_mb": ("Peak Memory", "MB"),
+            "drc_errors": ("DRC Errors", "violations")
+        }
+
+        tech_colors = {
+            "sky130": "#39c5cf",
+            "ics55": "#d29922",
+            "nangate45": "#bc8cff",
+            "asap7": "#3fb950",
+            "gt3": "#58a6ff",
+            "gt2n": "#f85149"
+        }
+
+        data_points = []
+        for r in rows:
+            xv = r.get(x_metric)
+            yv = r.get(y_metric)
+            if xv is not None and yv is not None and not isinstance(xv, str) and not isinstance(yv, str):
+                data_points.append({
+                    "id": r["experiment_id"],
+                    "name": r["name"],
+                    "tech": r["technology_id"],
+                    "design": r["design_id"],
+                    "status": r["status"],
+                    "x": float(xv),
+                    "y": float(yv)
+                })
+
+        x_options = "".join([f"<option value='{k}' {'selected' if k==x_metric else ''}>{v[0]}</option>" for k,v in metric_labels.items()])
+        y_options = "".join([f"<option value='{k}' {'selected' if k==y_metric else ''}>{v[0]}</option>" for k,v in metric_labels.items()])
+
+        tech_options = "<option value=''>All Technologies (6 PDKs)</option>"
+        for tk, color in tech_colors.items():
+            sel = "selected" if tk == tech_filter else ""
+            tech_options += f"<option value='{tk}' {sel}>{tk.upper()}</option>"
+
+        data_points_json = json.dumps(data_points)
+        x_label = metric_labels.get(x_metric, (x_metric, ""))[0]
+        x_unit = metric_labels.get(x_metric, ("", ""))[1]
+        y_label = metric_labels.get(y_metric, (y_metric, ""))[0]
+        y_unit = metric_labels.get(y_metric, ("", ""))[1]
+
+        content = f"""
+        <div class="card" style="background: linear-gradient(135deg, #161b22, #0d1117); border: 1px solid var(--accent-blue);">
+            <h1>Interactive Metric Correlation &amp; Scatter Plot</h1>
+            <p style="color: var(--text-muted); font-size: 1rem;">
+                Cross-PDK parametric correlation analysis tool comparing physical design metrics across Sky130, ICsprout55, NanGate45, ASAP7, GT3, and GT2N.
+            </p>
+        </div>
+
+        <form method="GET" action="/metrics/correlation" class="toolbar">
+            <label style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">X-Axis Metric:</label>
+            <select name="x" onchange="this.form.submit()">
+                {x_options}
+            </select>
+
+            <label style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-left: 1rem;">Y-Axis Metric:</label>
+            <select name="y" onchange="this.form.submit()">
+                {y_options}
+            </select>
+
+            <label style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-left: 1rem;">Filter PDK:</label>
+            <select name="tech" onchange="this.form.submit()">
+                {tech_options}
+            </select>
+
+            <span style="margin-left: auto; font-size: 0.85rem; color: var(--accent-cyan); font-weight: 600;">
+                {len(data_points)} Data Points Plotting
+            </span>
+        </form>
+
+        <div class="card">
+            <h2>Scatter Plot: {html.escape(y_label)} vs. {html.escape(x_label)}</h2>
+            <div id="scatterPlotContainer" style="background-color: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.5rem; min-height: 420px; position: relative;">
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Correlation Data Table ({len(data_points)} Experiments)</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Experiment ID</th>
+                            <th>Technology</th>
+                            <th>Design</th>
+                            <th>Status</th>
+                            <th>X: {html.escape(x_label)} ({html.escape(x_unit)})</th>
+                            <th>Y: {html.escape(y_label)} ({html.escape(y_unit)})</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        """
+
+        for pt in data_points:
+            st_cls = "badge-success" if pt["status"] == "SUCCESS" else ("badge-failed" if pt["status"] == "FAILED" else "badge-incomplete")
+            content += f"""
+            <tr>
+                <td><a href="/experiments/{pt['id']}"><strong>{pt['id']}</strong></a></td>
+                <td><span class="badge badge-tech">{pt['tech']}</span></td>
+                <td>{pt['design']}</td>
+                <td><span class="badge {st_cls}">{pt['status']}</span></td>
+                <td style="font-family: var(--font-mono);">{pt['x']:,.2f}</td>
+                <td style="font-family: var(--font-mono);">{pt['y']:,.2f}</td>
+            </tr>
+            """
+
+        content += f"""
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>
+            const points = {data_points_json};
+            const techColors = {json.dumps(tech_colors)};
+            const xLabel = "{html.escape(x_label)} ({html.escape(x_unit)})";
+            const yLabel = "{html.escape(y_label)} ({html.escape(y_unit)})";
+
+            function renderScatterPlot() {{
+                const container = document.getElementById('scatterPlotContainer');
+                if (!points || points.length === 0) {{
+                    container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 4rem;">No valid metric pairs available for correlation plot under selected criteria.</p>';
+                    return;
+                }}
+
+                const xVals = points.map(p => p.x);
+                const yVals = points.map(p => p.y);
+
+                const minX = Math.min(...xVals);
+                const maxX = Math.max(...xVals) || minX + 1;
+                const minY = Math.min(...yVals);
+                const maxY = Math.max(...yVals) || minY + 1;
+
+                const width = 850;
+                const height = 350;
+                const padding = 60;
+
+                let svg = `<svg width="100%" height="${{height + 60}}" viewBox="0 0 ${{width}} ${{height + 60}}" style="overflow: visible;">`;
+
+                // Axes lines
+                svg += `<line x1="${{padding}}" y1="${{height}}" x2="${{width - 20}}" y2="${{height}}" stroke="var(--border-color)" stroke-width="2" />`;
+                svg += `<line x1="${{padding}}" y1="20" x2="${{padding}}" y2="${{height}}" stroke="var(--border-color)" stroke-width="2" />`;
+
+                // Axis labels
+                svg += `<text x="${{width / 2}}" y="${{height + 45}}" fill="var(--text-heading)" font-size="13" font-weight="bold" text-anchor="middle">${{xLabel}}</text>`;
+                svg += `<text x="${{-height / 2}}" y="20" fill="var(--text-heading)" font-size="13" font-weight="bold" text-anchor="middle" transform="rotate(-90)">${{yLabel}}</text>`;
+
+                // Plot dots
+                points.forEach(pt => {{
+                    const x = padding + ((pt.x - minX) / (maxX - minX || 1)) * (width - padding - 40);
+                    const y = height - ((pt.y - minY) / (maxY - minY || 1)) * (height - 40);
+                    const color = techColors[pt.tech] || "#58a6ff";
+
+                    svg += `<circle cx="${{x}}" cy="${{y}}" r="6" fill="${{color}}" stroke="#fff" stroke-width="1.5" opacity="0.85">`;
+                    svg += `<title>${{pt.id}} (${{pt.tech}} - ${{pt.design}})\n${{xLabel}}: ${{pt.x}}\n${{yLabel}}: ${{pt.y}}\nStatus: ${{pt.status}}</title>`;
+                    svg += `</circle>`;
+                }});
+
+                svg += `</svg>`;
+                container.innerHTML = svg;
+            }}
+
+            renderScatterPlot();
+        </script>
+        """
+
+        self.send_html(render_page("Metric Correlations & Scatter Plot", content, active="correlation"))
 
 def run_server(port: int = 8000):
     server_address = ("", port)
