@@ -10,6 +10,7 @@ from typing import Any, Dict, List, Optional
 from website.templates import BASE_HEADER, BASE_FOOTER
 from website.def_parser import parse_def_file
 from website.analysis_loader import get_all_analysis_docs, get_analysis_doc_by_id
+from website.research_data import PDK_DEFECTS, MASTER_INTERVENTIONS, ENGINEERING_INCIDENTS, COMPARABILITY_RULES, FOUR_TRUTHS_RULES
 
 ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT / "database" / "ota.db"
@@ -857,7 +858,86 @@ class WebHandler(BaseHTTPRequestHandler):
                 </tbody>
             </table>
         </div>
+
+        <!-- FOUR TRUTHS COMPLIANCE & PROVENANCE FRAMEWORK (Doc 20 & 26 Result Data) -->
+        <div class="card" style="border-top: 3px solid var(--accent-blue);">
+            <h2>Four Truths Compliance & Provenance Framework (Doc 20 &amp; 26 Result Data)</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                Scientific verification firewall enforcing four distinct categories of experimental truth to prevent unverified cross-PDK claims.
+            </p>
+            <div class="grid-2">
+                <div style="background-color: var(--bg-dark); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--accent-blue);">1. DESIGN TRUTH</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">What was actually designed and synthesized</p>
+                    <ul style="margin-left: 1.2rem; font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.6;">
+                        <li>Top Module: <code>{data.get('design',{}).get('top_module','PicoRV32')}</code></li>
+                        <li>RTL Revision: <code>{data.get('design',{}).get('revision','git-commit-60a14')}</code></li>
+                        <li>Logical Constraints: <code>{data.get('configuration',{}).get('clock_period_ns','20.0')} ns SDC Clock Target</code></li>
+                    </ul>
+                </div>
+                <div style="background-color: var(--bg-dark); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--accent-cyan);">2. TECHNOLOGY TRUTH</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">What the PDK collateral provided</p>
+                    <ul style="margin-left: 1.2rem; font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.6;">
+                        <li>Target PDK Node: <code>{data.get('technology',{}).get('name','Sky130')} ({data.get('technology',{}).get('id','')})</code></li>
+                        <li>Liberty Models: <code>Nominal PVT Corner (.lib)</code></li>
+                        <li>LEF Track Grid: <code>Standard Cell Height &amp; Pitch Grid</code></li>
+                    </ul>
+                </div>
+                <div style="background-color: var(--bg-dark); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--accent-purple);">3. TOOL TRUTH</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">What EDA tools executed and reported</p>
+                    <ul style="margin-left: 1.2rem; font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.6;">
+                        <li>Flow Engine: <code>OpenLane v1.0.2 / OpenROAD</code></li>
+                        <li>Synthesis Engine: <code>Yosys v0.26</code></li>
+                        <li>Static Timing: <code>OpenSTA v2.4</code></li>
+                    </ul>
+                </div>
+                <div style="background-color: var(--bg-dark); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--accent-green);">4. PHYSICAL TRUTH</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">What layout artifacts and signoff tests produced</p>
+                    <ul style="margin-left: 1.2rem; font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.6;">
+                        <li>Physical Layout: <code>DEF / ODB Physical Netlist Artifacts</code></li>
+                        <li>Parasitic Model: <code>SPEF Interconnect RC Models</code></li>
+                        <li>Verification Firewall: <code>Signoff DRC / LVS Verification Status</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         """
+
+        # MASTER INTERVENTIONS & INCIDENT FORENSICS (Doc 10, 11, 22 Result Data)
+        exp_interventions = [i for i in MASTER_INTERVENTIONS if i["experiment_id"] == exp_id or i.get("parent_id") == exp_id]
+        exp_incidents = [inc for inc in ENGINEERING_INCIDENTS if inc["experiment_id"] == exp_id]
+
+        if exp_interventions or exp_incidents:
+            content += """
+            <div class="card" style="border-top: 3px solid var(--accent-orange);">
+                <h2>Master Interventions &amp; Incident Forensics (Doc 10, 11, 22 Result Data)</h2>
+            """
+            if exp_interventions:
+                content += """
+                <h3 style="color: var(--accent-orange); margin-top: 0.5rem;">Applied Forensic Interventions</h3>
+                <table>
+                    <thead><tr><th>ID</th><th>Parent Exp</th><th>Type</th><th>Classification</th><th>Before State</th><th>After State</th></tr></thead>
+                    <tbody>
+                """
+                for inter in exp_interventions:
+                    content += f"<tr><td><span class='badge badge-tech'>{inter['id']}</span></td><td><a href='/experiments/{inter.get('parent_id','')}'>{inter.get('parent_id','')}</a></td><td>{inter['type']}</td><td>{inter['classification']}</td><td><code>{inter['before_state']}</code></td><td><code>{inter['after_state']}</code></td></tr>"
+                content += "</tbody></table>"
+
+            if exp_incidents:
+                content += """
+                <h3 style="color: var(--accent-red); margin-top: 1rem;">Engineering Incident Logs</h3>
+                <table>
+                    <thead><tr><th>ID</th><th>Stage</th><th>Tool</th><th>Error Code</th><th>Message</th><th>Remediation</th></tr></thead>
+                    <tbody>
+                """
+                for inc in exp_incidents:
+                    content += f"<tr><td><span class='badge badge-failed'>{inc['id']}</span></td><td>{inc['stage']}</td><td>{inc['tool']}</td><td><code>{inc['error_code']}</code></td><td>{inc['error_text']}</td><td><code>{inc['remediation']}</code></td></tr>"
+                content += "</tbody></table>"
+
+            content += "</div>"
 
         self.send_html(render_page(f"Experiment {exp_id}", content, active="experiments"))
 
@@ -996,6 +1076,32 @@ class WebHandler(BaseHTTPRequestHandler):
         content += "<tr><td>WNS Slack (ns)</td>" + "".join([f"<td><code>{d.get('metrics',{}).get('wns_ns','Not available') or 'Not available'}</code></td>" for d in loaded_exps]) + "</tr>"
 
         content += "</tbody></table></div></div>"
+
+        # DO-NOT-COMPARE REGISTER & COMPARABILITY MATRIX (Doc 24 Result Data)
+        content += """
+        <div class="card" style="border-top: 3px solid var(--accent-cyan);">
+            <h2>Do-Not-Compare Register &amp; Scientific Comparability Matrix (Doc 24 Result Data)</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                Scientific boundary rules governing cross-PDK comparisons to prevent invalid assertions when comparing distinct technology nodes.
+            </p>
+            <table>
+                <thead>
+                    <tr><th>Metric Group</th><th>Raw Metric</th><th>Comparability Class</th><th>Required Controls &amp; Context</th><th>Allowed Reporting Format</th></tr>
+                </thead>
+                <tbody>
+        """
+        for r in COMPARABILITY_RULES:
+            badge_cls = "badge-comparable" if "C3" in r["comparability_class"] else ("badge-partial" if "C2" in r["comparability_class"] or "C1" in r["comparability_class"] else "badge-not-comparable")
+            content += f"""
+            <tr>
+                <td><strong>{r['metric_group']}</strong></td>
+                <td>{r['raw_metric']}</td>
+                <td><span class="badge {badge_cls}">{r['comparability_class']}</span></td>
+                <td>{r['conditions']}</td>
+                <td><code>{r['allowed_reporting']}</code></td>
+            </tr>
+            """
+        content += "</tbody></table></div>"
 
         chart_data_json = json.dumps([{
             "id": d["experiment"]["id"],
@@ -1256,6 +1362,41 @@ class WebHandler(BaseHTTPRequestHandler):
             st_cls = "badge-success" if e["status"] == "SUCCESS" else ("badge-failed" if e["status"] == "FAILED" else "badge-incomplete")
             content += f"<tr><td><a href='/experiments/{e['experiment_id']}'><strong>{e['experiment_id']}</strong></a></td><td>{e['name']}</td><td>{e['experiment_type']}</td><td><span class='badge {st_cls}'>{e['status']}</span></td></tr>"
         content += "</tbody></table></div>"
+
+        # PDK DEFECT & LIMITATION REGISTER (Doc 09 & 23 Result Data)
+        tech_defects = [d for d in PDK_DEFECTS if d["technology_id"] == tech_id or d["technology_id"].lower() == tech_id.lower() or tech_id.lower() in d["pdk_name"].lower()]
+        defect_rows = ""
+        if tech_defects:
+            for d in tech_defects:
+                defect_rows += f"""
+                <tr>
+                    <td><span class="badge badge-failed">{d['id']}</span></td>
+                    <td><strong>{d['stage']}</strong></td>
+                    <td>{d['limitation']}</td>
+                    <td><span class="badge badge-incomplete">{d['severity']}</span></td>
+                    <td>{d['root_cause']}</td>
+                    <td><code>{d['workaround']}</code></td>
+                </tr>
+                """
+        else:
+            defect_rows = "<tr><td colspan='6' style='color: var(--text-muted);'>No known PDK defects recorded for this node in the register.</td></tr>"
+
+        content += f"""
+        <div class="card" style="border-top: 3px solid var(--accent-orange);">
+            <h2>PDK Defect &amp; Limitation Register (Doc 09 &amp; 23 Result Data)</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                Official technology audit register detailing known technology collateral defects, missing timing arcs, LEF property gaps, and workaround patches for <strong>{t['name']}</strong>.
+            </p>
+            <table>
+                <thead>
+                    <tr><th>Defect ID</th><th>Stage</th><th>Limitation / Property Gap</th><th>Severity</th><th>Root Cause</th><th>Workaround / Correction</th></tr>
+                </thead>
+                <tbody>
+                    {defect_rows}
+                </tbody>
+            </table>
+        </div>
+        """
 
         self.send_html(render_page(f"Technology {t['name']}", content, active="technologies"))
 
